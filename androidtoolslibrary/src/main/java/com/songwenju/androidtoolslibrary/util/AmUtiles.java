@@ -5,11 +5,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
 import java.util.Calendar;
 
 /**
- * 作者：liujingyuan on 2016/3/21 17:41
- * 邮箱：906514731@qq.com
  * 定时器
  */
 public class AmUtiles {

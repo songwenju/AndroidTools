@@ -4,13 +4,12 @@ import java.security.MessageDigest;
 
 /**
  * DigestUtils
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2014-03-20
+ *
  */
 public class DigestUtils {
 
     /**
-     * Used to build output as Hex
+     * Used to build output as HexUtil
      */
     private static final char[] DIGITS_LOWER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',
             'e', 'f'                         };
@@ -44,7 +43,7 @@ public class DigestUtils {
      * The returned array will be double the length of the passed array, as it takes two characters to represent any
      * given byte.
      * 
-     * @param data a byte[] to convert to Hex characters
+     * @param data a byte[] to convert to HexUtil characters
      * @return A char[] containing hexadecimal characters
      */
     protected static char[] encodeHex(final byte[] data) {

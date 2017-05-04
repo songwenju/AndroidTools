@@ -3,6 +3,9 @@ package com.songwenju.androidtoolslibrary.util;
 import java.util.Random;
 
 
+/**
+ * 随机数据工具类
+ */
 public class RandomUtils {
 
     public static final String NUMBERS_AND_LETTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

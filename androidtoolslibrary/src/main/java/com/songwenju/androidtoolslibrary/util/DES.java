@@ -19,9 +19,7 @@ import javax.crypto.spec.IvParameterSpec;
 
 /**
  * 将字符串进行DES加密解密
- * 
- * @version	0.1	20091106
- * @author	史先方
+ *
  */
 public class DES {
 	

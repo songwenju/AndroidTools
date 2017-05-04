@@ -1,4 +1,4 @@
-package com.songwenju.androidtoolslibrary.util;
+package com.songwenju.androidtoolslibrary.view;
 
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -37,9 +37,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * 作者：Administrator on 2016/9/26 09:53
- * 邮箱：906514731@qq.com
- * 禁止预加载的vbiewpager
+ * 禁止预加载的viewpager
  */
 public class NoPreloadViewPager extends ViewGroup {
 

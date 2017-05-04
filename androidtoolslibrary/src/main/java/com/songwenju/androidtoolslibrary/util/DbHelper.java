@@ -4,12 +4,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.github.lazylibrary.constant.DbConstants;
+import com.songwenju.androidtoolslibrary.constant.DbConstants;
+
 
 /**
  * db helper
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-10-21
+ *
  */
 public class DbHelper extends SQLiteOpenHelper {
 

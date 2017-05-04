@@ -16,8 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 作者：Administrator on 2016/9/1 16:40
- * 邮箱：906514731@qq.com
+ * 二维码相关
  */
 public class CreatQRCodeImg {
 

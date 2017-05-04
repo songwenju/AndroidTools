@@ -65,8 +65,8 @@ public class ChannelUtil {
      */
     private static String getChannelFromApk(Context context, String channelKey) {
         //从apk包中获取
-        ApplicationInfo appinfo = context.getApplicationInfo();
-        String sourceDir = appinfo.sourceDir;
+        ApplicationInfo appInfo = context.getApplicationInfo();
+        String sourceDir = appInfo.sourceDir;
         //默认放在meta-inf/里， 所以需要再拼接一下
         String key = "META-INF/" + channelKey;
         String ret = "";
@@ -95,7 +95,7 @@ public class ChannelUtil {
         }
         String[] split = ret.split("\\*");
         String channel = "";
-        if (split != null && split.length >= 2) {
+        if (split.length >= 2) {
             channel = ret.substring(split[0].length() + 1);
         }
         return channel;
@@ -104,21 +104,21 @@ public class ChannelUtil {
     /**
      * 本地保存channel & 对应版本号
      *
-     * @param context
-     * @param channel
+     * @param context context
+     * @param channel channel
      */
     private static void saveChannelBySharedPreferences(Context context, String channel) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         Editor editor = sp.edit();
         editor.putString(CHANNEL_KEY, channel);
         editor.putInt(CHANNEL_VERSION_KEY, getVersionCode(context));
-        editor.commit();
+        editor.apply();
     }
 
     /**
      * 从sp中获取channel
      *
-     * @param context
+     * @param context context
      * @return 为空表示获取异常、sp中的值已经失效、sp中没有此值
      */
     private static String getChannelBySharedPreferences(Context context) {
@@ -143,7 +143,7 @@ public class ChannelUtil {
     /**
      * 从包信息中获取版本号
      *
-     * @param context
+     * @param context context
      * @return
      */
     private static int getVersionCode(Context context) {

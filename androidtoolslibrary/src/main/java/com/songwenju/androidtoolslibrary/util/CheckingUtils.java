@@ -24,7 +24,7 @@ import java.io.IOException;
  * <h2>提供常用数据验证的工具类，不符合的话就抛异常</h2>
  * 
  * <br><b>1、Object相关验证</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.01)、验证对象是否为空，为空的话抛出异常：static void valiObjectIsNull(Object object, String objectName)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.01)、验证对象是否为空，为空的话抛出异常：static void validObjectIsNull(Object object, String objectName)
  * <br>
  * <br><b>2、String相关验证</b>
  * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.01)、验证字符串的长度是在指定范围内，不在的话抛出异常，忽略前后的空白符：static void valiStringLength(String string, int minLength, int maxLength)
@@ -37,14 +37,14 @@ import java.io.IOException;
  * <br>&nbsp;&nbsp;&nbsp;&nbsp;(3.03)、验证Int数据的最大值，不合法的话抛出异常：static void valiIntMaxValue(int number, int maxValue, String objectName)
  * <br>
  * <br><b>4、File相关验证</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.01)、验证文件是否存在，不存在的话抛出异常：static valiFileIsExists(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.02)、验证文件是否能读取，不能读的话抛出异常：static void valiFileCanRead(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.03)、验证文件是否能写入，不能写的话抛出异常：static void valiFileCanWrite(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.04)、验证file是否是目录，不是的话抛出异常：static void valiFileIsDirectory(File directory)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.05)、验证file是否是文件，不是的话抛出异常：static void valiFileIsFile(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.06)、对指定的文件对象进行是否null、是否存在以及是否是文件校验，不合法的话抛出异常：static void valiFile(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.07)、用于在执行读取之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否读取校验，不合法的话抛出异常：static void valiFileByReadBefore(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.08)、用于在执行写入之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否写入校验，不合法的话抛出异常：static void valiFileByWriteBefore(File file)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.01)、验证文件是否存在，不存在的话抛出异常：static validFileIsExists(File file)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.02)、验证文件是否能读取，不能读的话抛出异常：static void validFileCanRead(File file)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.03)、验证文件是否能写入，不能写的话抛出异常：static void validFileCanWrite(File file)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.04)、验证file是否是目录，不是的话抛出异常：static void validFileIsDirectory(File directory)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.05)、验证file是否是文件，不是的话抛出异常：static void validFileIsFile(File file)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.06)、对指定的文件对象进行是否null、是否存在以及是否是文件校验，不合法的话抛出异常：static void validFile(File file)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.07)、用于在执行读取之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否读取校验，不合法的话抛出异常：static void validFileByReadBefore(File file)
+ * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.08)、用于在执行写入之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否写入校验，不合法的话抛出异常：static void validFileByWriteBefore(File file)
  */
 public class CheckingUtils {
 	/* *****************************************************1、Object相关验证start*********************************************************************** */
@@ -53,7 +53,7 @@ public class CheckingUtils {
 	 * @param object 待验证的对象
 	 * @param objectName 抛出异常时提示："Object '"+objectName+"' is null!"
 	 */
-	public static void valiObjectIsNull(Object object, String objectName) throws
+	public static void validObjectIsNull(Object object, String objectName) throws
 			NullPointerException {
 		if(object == null){
 			throw new NullPointerException("Object '"+objectName+"' is null!");
@@ -212,7 +212,7 @@ public class CheckingUtils {
 	 * @param file 待验证的文件
 	 * @throws java.io.FileNotFoundException 当文件不存在时抛出此异常
 	 */
-	public static void valiFileIsExists(File file) throws
+	public static void validFileIsExists(File file) throws
 			FileNotFoundException {
 		if(!file.exists()){
 			throw new FileNotFoundException("File '"+file.getName()+"' not found!");
@@ -225,7 +225,7 @@ public class CheckingUtils {
 	 * @param file 被检测的对象
 	 * @throws java.io.IOException 不能读时抛出此异常
 	 */
-	public static void valiFileCanRead(File file) throws IOException {
+	public static void validFileCanRead(File file) throws IOException {
 		if(!file.canRead()){
 			 throw new IOException("For file '"+file.getName()+"' not read access!");
 		}
@@ -237,7 +237,7 @@ public class CheckingUtils {
 	 * @param file 被检测的对象
 	 * @throws java.io.IOException 不能写时抛出此异常
 	 */
-	public static void valiFileCanWrite(File file) throws IOException {
+	public static void validFileCanWrite(File file) throws IOException {
 		if(!file.canWrite()){
 			 throw new IOException("For file '"+file.getName()+"' not write access!");
 		}
@@ -249,7 +249,7 @@ public class CheckingUtils {
 	 * @param file 待验证的文件对象
 	 * @throws IllegalArgumentException file 不存在或不是目录时抛出此异常
 	 */
-	public static void valiFileIsDirectory(File file) throws
+	public static void validFileIsDirectory(File file) throws
 			IllegalArgumentException {
 		if(!file.isDirectory()){
 			throw new IllegalArgumentException("File:'"+file.getName()+"'does not exist or not directory!");
@@ -262,7 +262,7 @@ public class CheckingUtils {
 	 * @param file 待验证的文件对象
 	 * @throws IllegalArgumentException file 不存在或不是文件时抛出此异常
 	 */
-	public static void valiFileIsFile(File file) throws
+	public static void validFileIsFile(File file) throws
 			IllegalArgumentException {
 		if(!file.isFile()){
 			throw new IllegalArgumentException("File:'"+file.getName()+"'does not exist or not file!");
@@ -276,12 +276,12 @@ public class CheckingUtils {
 	 * @throws java.io.FileNotFoundException 找不到file代表的文件
 	 * @throws IllegalArgumentException file不是文件
 	 */
-	public static void valiFile(File file) throws NullPointerException,
+	public static void validFile(File file) throws NullPointerException,
 			FileNotFoundException,
 			IllegalArgumentException {
-		valiObjectIsNull(file, "file");
-		valiFileIsExists(file);
-		valiFileIsFile(file);
+		validObjectIsNull(file, "file");
+		validFileIsExists(file);
+		validFileIsFile(file);
 	}
 
 	/**
@@ -290,12 +290,12 @@ public class CheckingUtils {
 	 * @throws java.io.FileNotFoundException 找不到file代表的文件
 	 * @throws IllegalArgumentException file不是文件
 	 */
-	public static void valiDir(File file) throws NullPointerException,
+	public static void validDir(File file) throws NullPointerException,
 			FileNotFoundException,
 			IllegalArgumentException {
-		valiObjectIsNull(file, "file");
-		valiFileIsExists(file);
-		valiFileIsDirectory(file);
+		validObjectIsNull(file, "file");
+		validFileIsExists(file);
+		validFileIsDirectory(file);
 	}
 
 
@@ -306,13 +306,13 @@ public class CheckingUtils {
 	 * @throws IllegalArgumentException file不是文件
 	 * @throws java.io.IOException file代表的文件不能读取
 	 */
-	public static void valiFileByReadBefore(File file) throws
+	public static void validFileByReadBefore(File file) throws
 			NullPointerException,
 			FileNotFoundException,
 			IllegalArgumentException,
 			IOException {
-		valiFile(file);
-		valiFileCanRead(file);
+		validFile(file);
+		validFileCanRead(file);
 	}
 
 
@@ -321,9 +321,9 @@ public class CheckingUtils {
 	 * @param file 指定的文件
 	 * @throws java.io.IOException file代表的文件不能写入
 	 */
-	public static void valiFileByWriteBefore(File file) throws IOException {
-		valiFile(file);
-		valiFileCanWrite(file);
+	public static void validFileByWriteBefore(File file) throws IOException {
+		validFile(file);
+		validFileCanWrite(file);
 	}
 	/* *****************************************************4、File相关验证over************************************************************************ */
 }

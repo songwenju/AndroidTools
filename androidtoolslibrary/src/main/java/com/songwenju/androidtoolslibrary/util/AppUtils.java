@@ -1,18 +1,4 @@
-package com.songwenju.androidtoolslibrary.util; /**
- * Copyright 2014 Zhenguo Jin
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.songwenju.androidtoolslibrary.util;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
@@ -31,8 +17,11 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
@@ -48,14 +37,9 @@ import javax.security.auth.x500.X500Principal;
 /**
  * APP工具类
  * APP相关信息工具类。获取版本信息
- *
- * @author jingle1267@163.com
  */
 public final class AppUtils {
-
-    private static final boolean DEBUG = true;
     private static final String TAG = "AppUtils";
-
 
     /**
      * Don't let anyone instantiate this class.
@@ -76,24 +60,12 @@ public final class AppUtils {
         try {
             String packageName = context.getPackageName();
             verCode = context.getPackageManager()
-                             .getPackageInfo(packageName, 0).versionCode;
+                    .getPackageInfo(packageName, 0).versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
         return verCode;
     }
-
-
-    /**
-     * 获取应用运行的最大内存
-     *
-     * @return 最大内存
-     */
-    public static long getMaxMemory() {
-
-        return Runtime.getRuntime().maxMemory() / 1024;
-    }
-
 
     /**
      * 得到软件显示版本信息
@@ -106,13 +78,21 @@ public final class AppUtils {
         try {
             String packageName = context.getPackageName();
             verName = context.getPackageManager()
-                             .getPackageInfo(packageName, 0).versionName;
+                    .getPackageInfo(packageName, 0).versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
         return verName;
     }
 
+    /**
+     * 获取应用运行的最大内存
+     *
+     * @return 最大内存
+     */
+    public static long getMaxMemory() {
+        return Runtime.getRuntime().maxMemory() / 1024;
+    }
 
     /**
      * 安装apk
@@ -129,7 +109,6 @@ public final class AppUtils {
         context.startActivity(intent);
     }
 
-
     /**
      * 安装apk
      *
@@ -144,6 +123,61 @@ public final class AppUtils {
         context.startActivity(intent);
     }
 
+    /**
+     * 静默安装apk
+     *
+     * @param apkAbsolutePath apk 绝对路径
+     * @return 是否安装成功
+     */
+    public static String installSilent(String apkAbsolutePath) {
+        String[] args = {"pm", "install", "-r", apkAbsolutePath};
+        String result = "";
+        ProcessBuilder processBuilder = new ProcessBuilder(args);
+        Process process;
+        InputStream errIs = null;
+        InputStream inIs = null;
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            int read;
+            process = processBuilder.start();
+            errIs = process.getErrorStream();
+            while ((read = errIs.read()) != -1) {
+                byteArrayOutputStream.write(read);
+            }
+            // byteArrayOutputStream.write("/n");
+            inIs = process.getInputStream();
+            while ((read = inIs.read()) != -1) {
+                byteArrayOutputStream.write(read);
+            }
+            byte[] data = byteArrayOutputStream.toByteArray();
+            result = new String(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (errIs != null) {
+                    errIs.close();
+                }
+                if (inIs != null) {
+                    inIs.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        //静默安装之后删除应用。
+        try {
+            File file = new File(apkAbsolutePath);
+            if (file.isFile() && file.exists()) {
+                file.delete();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     /**
      * 卸载apk
@@ -157,7 +191,6 @@ public final class AppUtils {
         intent.setData(packageURI);
         context.startActivity(intent);
     }
-
 
     /**
      * 检测服务是否运行
@@ -180,7 +213,6 @@ public final class AppUtils {
         }
         return isRunning;
     }
-
 
     /**
      * 停止运行服务
@@ -213,11 +245,9 @@ public final class AppUtils {
         try {
             File dir = new File("/sys/devices/system/cpu/");
             File[] files = dir.listFiles(new FileFilter() {
-                @Override public boolean accept(File pathname) {
-                    if (Pattern.matches("cpu[0-9]", pathname.getName())) {
-                        return true;
-                    }
-                    return false;
+                @Override
+                public boolean accept(File pathname) {
+                    return Pattern.matches("cpu[0-9]", pathname.getName());
                 }
             });
             return files.length;
@@ -228,7 +258,7 @@ public final class AppUtils {
 
 
     /**
-     * whether this process is named with processName
+     * 是否含有当前的进程
      *
      * @param context     上下文
      * @param processName 进程名
@@ -259,7 +289,7 @@ public final class AppUtils {
 
 
     /**
-     * whether application is in background
+     * 应用是否在后台运行
      * <ul>
      * <li>need use permission android.permission.GET_TASKS in Manifest.xml</li>
      * </ul>
@@ -268,6 +298,7 @@ public final class AppUtils {
      * @return if application is in background return true, otherwise return
      * false
      */
+    @Deprecated
     public static boolean isApplicationInBackground(Context context) {
         ActivityManager am = (ActivityManager) context.getSystemService(
                 Context.ACTIVITY_SERVICE);
@@ -275,7 +306,7 @@ public final class AppUtils {
         if (taskList != null && !taskList.isEmpty()) {
             ComponentName topActivity = taskList.get(0).topActivity;
             if (topActivity != null && !topActivity.getPackageName()
-                                                   .equals(context.getPackageName())) {
+                    .equals(context.getPackageName())) {
                 return true;
             }
         }
@@ -293,9 +324,9 @@ public final class AppUtils {
     public static String getSign(Context context, String pkgName) {
         try {
             PackageInfo pis = context.getPackageManager()
-                                     .getPackageInfo(pkgName,
-                                             PackageManager.GET_SIGNATURES);
-            return hexdigest(pis.signatures[0].toByteArray());
+                    .getPackageInfo(pkgName,
+                            PackageManager.GET_SIGNATURES);
+            return hexDigest(pis.signatures[0].toByteArray());
         } catch (NameNotFoundException e) {
             e.printStackTrace();
             return null;
@@ -310,9 +341,9 @@ public final class AppUtils {
      * @param paramArrayOfByte 签名byte数组
      * @return 32位签名字符串
      */
-    private static String hexdigest(byte[] paramArrayOfByte) {
-        final char[] hexDigits = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97,
-                98, 99, 100, 101, 102 };
+    private static String hexDigest(byte[] paramArrayOfByte) {
+        final char[] hexDigits = {48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97,
+                98, 99, 100, 101, 102};
         try {
             MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
             localMessageDigest.update(paramArrayOfByte);
@@ -340,7 +371,7 @@ public final class AppUtils {
      * @return 被清理的数量
      */
     public static int gc(Context context) {
-        long i = getDeviceUsableMemory(context);
+        long usableMemory = getDeviceUsableMemory(context);
         int count = 0; // 清理掉的进程数
         ActivityManager am = (ActivityManager) context.getSystemService(
                 Context.ACTIVITY_SERVICE);
@@ -369,9 +400,6 @@ public final class AppUtils {
                     // pkgList 得到该进程下运行的包名
                     String[] pkgList = process.pkgList;
                     for (String pkgName : pkgList) {
-                        if (DEBUG) {
-
-                        }
                         try {
                             am.killBackgroundProcesses(pkgName);
                             count++;
@@ -382,9 +410,7 @@ public final class AppUtils {
                 }
             }
         }
-        if (DEBUG) {
 
-        }
         return count;
     }
 
@@ -398,10 +424,10 @@ public final class AppUtils {
     public static int getDeviceUsableMemory(Context context) {
         ActivityManager am = (ActivityManager) context.getSystemService(
                 Context.ACTIVITY_SERVICE);
-        MemoryInfo mi = new MemoryInfo();
-        am.getMemoryInfo(mi);
+        MemoryInfo memoryInfo = new MemoryInfo();
+        am.getMemoryInfo(memoryInfo);
         // 返回当前系统的可用内存
-        return (int) (mi.availMem / (1024 * 1024));
+        return (int) (memoryInfo.availMem / (1024 * 1024));
     }
 
 
@@ -415,9 +441,9 @@ public final class AppUtils {
 
         List<PackageInfo> apps = new ArrayList<PackageInfo>();
         PackageManager pManager = context.getPackageManager();
-        List<PackageInfo> paklist = pManager.getInstalledPackages(0);
-        for (int i = 0; i < paklist.size(); i++) {
-            PackageInfo pak = paklist.get(i);
+        List<PackageInfo> pakList = pManager.getInstalledPackages(0);
+        for (int i = 0; i < pakList.size(); i++) {
+            PackageInfo pak = pakList.get(i);
             if ((pak.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) <=
                     0) {
                 // customs applications
@@ -481,11 +507,9 @@ public final class AppUtils {
                         /* Assuming default is */"Dalvik");
                     if ("libdvm.so".equals(value)) {
                         return "Dalvik";
-                    }
-                    else if ("libart.so".equals(value)) {
+                    } else if ("libart.so".equals(value)) {
                         return "ART";
-                    }
-                    else if ("libartd.so".equals(value)) {
+                    } else if ("libartd.so".equals(value)) {
                         return "ART debug build";
                     }
 
@@ -520,20 +544,22 @@ public final class AppUtils {
         boolean debuggable = false;
         try {
             PackageInfo pinfo = ctx.getPackageManager()
-                                   .getPackageInfo(ctx.getPackageName(),
-                                           PackageManager.GET_SIGNATURES);
+                    .getPackageInfo(ctx.getPackageName(),
+                            PackageManager.GET_SIGNATURES);
             Signature signatures[] = pinfo.signatures;
-            for (int i = 0; i < signatures.length; i++) {
+            for (Signature signature : signatures) {
                 CertificateFactory cf = CertificateFactory.getInstance("X.509");
                 ByteArrayInputStream stream = new ByteArrayInputStream(
-                        signatures[i].toByteArray());
+                        signature.toByteArray());
                 X509Certificate cert = (X509Certificate) cf.generateCertificate(
                         stream);
                 debuggable = cert.getSubjectX500Principal().equals(DEBUG_DN);
                 if (debuggable) break;
             }
         } catch (NameNotFoundException e) {
+            e.printStackTrace();
         } catch (CertificateException e) {
+            e.printStackTrace();
         }
         return debuggable;
     }
@@ -541,8 +567,9 @@ public final class AppUtils {
 
     /**
      * 比较版本号的大小,前者大则返回一个正数,后者大返回一个负数,相等则返回0   支持4.1.2,4.1.23.4.1.rc111这种形式
-     * @param version1
-     * @param version2
+     *
+     * @param version1 version1
+     * @param version2 version2
      * @return
      */
     public static int compareVersion(String version1, String version2) throws Exception {

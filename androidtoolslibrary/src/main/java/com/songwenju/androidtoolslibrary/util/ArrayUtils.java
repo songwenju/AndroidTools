@@ -20,7 +20,7 @@ import java.util.Stack;
 
 /**
  * <h2>数组工具类，提供一些有关数组的便捷方法</h2>
- *
+ * <p>
  * <br><b>1、增删移动相关</b>
  * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.01)、以无损的方式，将数组objects的元素从索引headIndex处开始到endIndex索引处结束的元素，向后移动number位：static
  * void backwardByLossless(Object[] objects, int headIndex, int endIndex, int
@@ -69,15 +69,14 @@ public class ArrayUtils {
         for (int w = 0; w < objects.length; w++) {
             if (!element.equals(objects[w])) {
                 continue;
-            }
-            else {
+            } else {
                 e = w;
                 break;
             }
         }
         return e;
     }
-	/* **************************************************************1、增删移动相关over************************************************************ */
+    /* **************************************************************1、增删移动相关over************************************************************ */
 	
 	
 	
@@ -88,33 +87,30 @@ public class ArrayUtils {
     /**
      * (2.01)、使用选择排序法，对数组intArray进行排序
      *
-     * @param intArray 待排序的数组
+     * @param intArray  待排序的数组
      * @param ascending 升序
      */
     public static void sortingByChoose(int[] intArray, boolean ascending) {
-        for (int cankaozhi = 0; cankaozhi < intArray.length - 1; cankaozhi++) {
-            int zhongjian = intArray[cankaozhi];
-            int zuixiao = 0;
-            for (int zujian = cankaozhi + 1;
-                 zujian <= intArray.length - 1;
-                 zujian++) {
+        for (int i = 0; i < intArray.length - 1; i++) {
+            int middle = intArray[i];
+            int min = 0;
+            for (int j = i + 1; j <= intArray.length - 1; j++) {
                 boolean typee = true;
                 if (ascending) {
-                    typee = zhongjian > intArray[zujian];
-                }
-                else {
-                    typee = zhongjian < intArray[zujian];
+                    typee = middle > intArray[j];
+                } else {
+                    typee = middle < intArray[j];
                 }
                 if (typee) {
-                    zhongjian = intArray[zujian];
-                    zuixiao = zujian;
+                    middle = intArray[j];
+                    min = j;
                 }
             }
 
-            if (zuixiao != 0) {
-                int f = intArray[zuixiao];
-                intArray[zuixiao] = intArray[cankaozhi];
-                intArray[cankaozhi] = f;
+            if (min != 0) {
+                int f = intArray[min];
+                intArray[min] = intArray[i];
+                intArray[i] = f;
             }
         }
     }
@@ -123,7 +119,7 @@ public class ArrayUtils {
     /**
      * (2.02)、使用插入排序法，对数组intArray进行排序
      *
-     * @param intArray 待排序的数组
+     * @param intArray  待排序的数组
      * @param ascending 升序
      */
     public static void sortingByInsert(int[] intArray, boolean ascending) {
@@ -134,8 +130,7 @@ public class ArrayUtils {
                 boolean typee = true;
                 if (ascending) {
                     typee = t < intArray[j];
-                }
-                else {
+                } else {
                     typee = t > intArray[j];
                 }
                 if (!typee) break;
@@ -151,7 +146,7 @@ public class ArrayUtils {
     /**
      * (2.03)、使用冒泡排序法，对数组intArray进行排序
      *
-     * @param intArray 待排序的数组
+     * @param intArray  待排序的数组
      * @param ascending 升序
      */
     public static void sortingByBubbling(int[] intArray, boolean ascending) {
@@ -160,8 +155,7 @@ public class ArrayUtils {
                 boolean typee = true;
                 if (ascending) {
                     typee = intArray[r] > intArray[r + 1];
-                }
-                else {
+                } else {
                     typee = intArray[r] < intArray[r + 1];
                 }
                 if (typee) {
@@ -177,7 +171,7 @@ public class ArrayUtils {
     /**
      * (2.04)、使用递归快排法，对数组intArray进行排序
      *
-     * @param intArray 待排序的数组
+     * @param intArray  待排序的数组
      * @param ascending 排序的方式，用本类中的静态字段指定
      */
     public static void sortingByFastRecursion(int[] intArray, int start, int end, boolean ascending) {
@@ -201,8 +195,7 @@ public class ArrayUtils {
                     j--;
                 }
             }
-        }
-        else {
+        } else {
             for (int j = end; i < j; ) {
                 while (intArray[j] < tmp && i < j) {
                     j--;
@@ -234,7 +227,7 @@ public class ArrayUtils {
     /**
      * (2.05)、使用栈快排法，对数组intArray进行排序
      *
-     * @param intArray 待排序的数组
+     * @param intArray  待排序的数组
      * @param ascending 升序
      */
     public static void sortingByFastStack(int[] intArray, boolean ascending) {
@@ -257,15 +250,13 @@ public class ArrayUtils {
                         i++;
                     }
                     for (; intArray[i] < tmp && i < j; i++) {
-                        ;
                     }
                     if (i < j) {
                         intArray[j] = intArray[i];
                         j--;
                     }
                 }
-            }
-            else {
+            } else {
                 while (i < j) {
                     while (intArray[j] < tmp && i < j) {
                         j--;
@@ -275,7 +266,6 @@ public class ArrayUtils {
                         i++;
                     }
                     for (; intArray[i] > tmp && i < j; i++) {
-                        ;
                     }
                     if (i < j) {
                         intArray[j] = intArray[i];
@@ -329,10 +319,10 @@ public class ArrayUtils {
     /**
      * 将给定的数组转换成字符串
      *
-     * @param integers 给定的数组
+     * @param integers     给定的数组
      * @param startSymbols 开始符号
-     * @param separator 分隔符
-     * @param endSymbols 结束符号
+     * @param separator    分隔符
+     * @param endSymbols   结束符号
      * @return 例如开始符号为"{"，分隔符为", "，结束符号为"}"，那么结果为：{1, 2, 3}
      */
     public static String toString(int[] integers, String startSymbols, String separator, String endSymbols) {
@@ -365,7 +355,7 @@ public class ArrayUtils {
     /**
      * 将给定的数组转换成字符串
      *
-     * @param integers 给定的数组
+     * @param integers  给定的数组
      * @param separator 分隔符
      * @return 例如分隔符为", "那么结果为：1, 2, 3
      */
@@ -388,10 +378,10 @@ public class ArrayUtils {
     /**
      * 将给定的数组转换成字符串
      *
-     * @param objects 给定的数组
+     * @param objects      给定的数组
      * @param startSymbols 开始符号
-     * @param separator 分隔符
-     * @param endSymbols 结束符号
+     * @param separator    分隔符
+     * @param endSymbols   结束符号
      * @return 例如开始符号为"{"，分隔符为", "，结束符号为"}"，那么结果为：{1, 2, 3}
      */
     public static String toString(Object[] objects, String startSymbols, String separator, String endSymbols) {
@@ -424,7 +414,7 @@ public class ArrayUtils {
     /**
      * 将给定的数组转换成字符串
      *
-     * @param objects 给定的数组
+     * @param objects   给定的数组
      * @param separator 分隔符
      * @return 例如分隔符为", "那么结果为：1, 2, 3
      */

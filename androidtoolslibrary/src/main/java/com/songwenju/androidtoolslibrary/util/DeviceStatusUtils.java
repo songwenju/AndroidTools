@@ -1,18 +1,4 @@
-package com.songwenju.androidtoolslibrary.util; /**
- * Copyright 2014 Zhenguo Jin (jinzhenguo1990@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.songwenju.androidtoolslibrary.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -28,7 +14,6 @@ import android.view.WindowManager;
 /**
  * 手机状态工具类 主要包括网络、蓝牙、屏幕亮度、飞行模式、音量等
  *
- * @author zhenguo
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class DeviceStatusUtils {
@@ -43,11 +28,10 @@ public class DeviceStatusUtils {
     /**
      * 获取系统屏幕亮度模式的状态，需要WRITE_SETTINGS权限
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC：自动；System.
-     *         SCREEN_BRIGHTNESS_MODE_AUTOMATIC
-     *         ：手动；默认：System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
+     * SCREEN_BRIGHTNESS_MODE_AUTOMATIC
+     * ：手动；默认：System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
      */
     public static int getScreenBrightnessModeState(Context context) {
         return Settings.System.getInt(context.getContentResolver(),
@@ -58,22 +42,18 @@ public class DeviceStatusUtils {
     /**
      * 判断系统屏幕亮度模式是否是自动，需要WRITE_SETTINGS权限
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return true：自动；false：手动；默认：true
      */
     public static boolean isScreenBrightnessModeAuto(Context context) {
-        return getScreenBrightnessModeState(context) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC ? true
-                                                                                                         : false;
+        return getScreenBrightnessModeState(context) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
     }
 
     /**
      * 设置系统屏幕亮度模式，需要WRITE_SETTINGS权限
      *
-     * @param context
-     *            上下文
-     * @param auto
-     *            自动
+     * @param context 上下文
+     * @param auto    自动
      * @return 是否设置成功
      */
     public static boolean setScreenBrightnessMode(Context context, boolean auto) {
@@ -82,7 +62,7 @@ public class DeviceStatusUtils {
             result = Settings.System.putInt(context.getContentResolver(),
                     Settings.System.SCREEN_BRIGHTNESS_MODE,
                     auto ? Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
-                         : Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                            : Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
         }
         return result;
     }
@@ -90,8 +70,7 @@ public class DeviceStatusUtils {
     /**
      * 获取系统亮度，需要WRITE_SETTINGS权限
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return 亮度，范围是0-255；默认255
      */
     public static int getScreenBrightness(Context context) {
@@ -103,10 +82,8 @@ public class DeviceStatusUtils {
      * 设置系统亮度（此方法只是更改了系统的亮度属性，并不能看到效果。要想看到效果可以使用setWindowBrightness()方法设置窗口的亮度），
      * 需要WRITE_SETTINGS权限
      *
-     * @param context
-     *            上下文
-     * @param screenBrightness
-     *            亮度，范围是0-255
+     * @param context          上下文
+     * @param screenBrightness 亮度，范围是0-255
      * @return 设置是否成功
      */
     public static boolean setScreenBrightness(Context context,
@@ -120,18 +97,15 @@ public class DeviceStatusUtils {
                 brightness = 255;
             }
         }
-        boolean result = Settings.System.putInt(context.getContentResolver(),
+        return Settings.System.putInt(context.getContentResolver(),
                 Settings.System.SCREEN_BRIGHTNESS, brightness);
-        return result;
     }
 
     /**
      * 设置给定Activity的窗口的亮度（可以看到效果，但系统的亮度属性不会改变）
      *
-     * @param activity
-     *            要通过此Activity来设置窗口的亮度
-     * @param screenBrightness
-     *            亮度，范围是0-255
+     * @param activity         要通过此Activity来设置窗口的亮度
+     * @param screenBrightness 亮度，范围是0-255
      */
     public static void setWindowBrightness(Activity activity,
                                            float screenBrightness) {
@@ -153,10 +127,8 @@ public class DeviceStatusUtils {
     /**
      * 设置系统亮度并实时可以看到效果，需要WRITE_SETTINGS权限
      *
-     * @param activity
-     *            要通过此Activity来设置窗口的亮度
-     * @param screenBrightness
-     *            亮度，范围是0-255
+     * @param activity         要通过此Activity来设置窗口的亮度
+     * @param screenBrightness 亮度，范围是0-255
      * @return 设置是否成功
      */
     public static boolean setScreenBrightnessAndApply(Activity activity,
@@ -172,8 +144,7 @@ public class DeviceStatusUtils {
     /**
      * 获取屏幕休眠时间，需要WRITE_SETTINGS权限
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return 屏幕休眠时间，单位毫秒，默认30000
      */
     public static int getScreenDormantTime(Context context) {
@@ -184,9 +155,8 @@ public class DeviceStatusUtils {
     /**
      * 设置屏幕休眠时间，需要WRITE_SETTINGS权限
      *
-     * @param context
-     *            上下文
-     * @param millis    时间
+     * @param context 上下文
+     * @param millis  时间
      * @return 设置是否成功
      */
     public static boolean setScreenDormantTime(Context context, int millis) {
@@ -198,8 +168,7 @@ public class DeviceStatusUtils {
     /**
      * 获取飞行模式的状态，需要WRITE_APN_SETTINGS权限
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return 1：打开；0：关闭；默认：关闭
      */
     @SuppressWarnings("deprecation")
@@ -216,24 +185,22 @@ public class DeviceStatusUtils {
     /**
      * 判断飞行模式是否打开，需要WRITE_APN_SETTINGS权限
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return true：打开；false：关闭；默认关闭
      */
     public static boolean isAirplaneModeOpen(Context context) {
-        return getAirplaneModeState(context) == 1 ? true : false;
+        return getAirplaneModeState(context) == 1;
     }
 
     /**
      * 设置飞行模式的状态，需要WRITE_APN_SETTINGS权限
      *
-     * @param context
-     *            上下文
-     * @param enable
-     *            飞行模式的状态
+     * @param context 上下文
+     * @param enable  飞行模式的状态
      * @return 设置是否成功
      */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1) @SuppressWarnings("deprecation")
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @SuppressWarnings("deprecation")
     public static boolean setAirplaneMode(Context context, boolean enable) {
         boolean result = true;
         // 如果飞行模式当前的状态与要设置的状态不一样
@@ -256,9 +223,8 @@ public class DeviceStatusUtils {
      * 获取蓝牙的状态
      *
      * @return 取值为BluetoothAdapter的四个静态字段：STATE_OFF, STATE_TURNING_OFF,
-     *         STATE_ON, STATE_TURNING_ON
-     * @throws Exception
-     *             没有找到蓝牙设备
+     * STATE_ON, STATE_TURNING_ON
+     * @throws Exception 没有找到蓝牙设备
      */
     public static int getBluetoothState() throws Exception {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter
@@ -274,29 +240,27 @@ public class DeviceStatusUtils {
      * 判断蓝牙是否打开
      *
      * @return true：已经打开或者正在打开；false：已经关闭或者正在关闭
-     *             没有找到蓝牙设备
+     * 没有找到蓝牙设备
      */
-    public static boolean isBluetoothOpen()  {
+    public static boolean isBluetoothOpen() {
         int bluetoothStateCode = 0;
         try {
             bluetoothStateCode = getBluetoothState();
             return bluetoothStateCode == BluetoothAdapter.STATE_ON
-                           || bluetoothStateCode == BluetoothAdapter.STATE_TURNING_ON ? true
-                                                                                      : false;
+                    || bluetoothStateCode == BluetoothAdapter.STATE_TURNING_ON;
         } catch (Exception e) {
             e.printStackTrace();
         }
-            return  false;
+        return false;
     }
 
     /**
      * 设置蓝牙状态
      *
-     * @param enable
-     *            打开
-     *             没有找到蓝牙设备
+     * @param enable 打开
+     *               没有找到蓝牙设备
      */
-    public static void setBluetooth(boolean enable)  {
+    public static void setBluetooth(boolean enable) {
         // 如果当前蓝牙的状态与要设置的状态不一样
         if (isBluetoothOpen() != enable) {
             // 如果是要打开就打开，否则关闭
@@ -310,12 +274,10 @@ public class DeviceStatusUtils {
     }
 
 
-
     /**
      * 获取铃声音量，需要WRITE_APN_SETTINGS权限
      *
-     * @param context
-     *            上下文
+     * @param context 上下文
      * @return 铃声音量，取值范围为0-7；默认为0
      */
     public static int getRingVolume(Context context) {
@@ -325,8 +287,7 @@ public class DeviceStatusUtils {
     /**
      * 获取媒体音量
      *
-     * @param context
-     *            上下文
+     * @param context    上下文
      * @param ringVloume 音量
      */
     public static void setRingVolume(Context context, int ringVloume) {

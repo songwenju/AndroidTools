@@ -1,15 +1,13 @@
 package com.songwenju.androidtoolslibrary.util;
 
-/**
- * 作者：liujingyuan on 2015/12/11 13:24
- * 邮箱：906514731@qq.com
- */
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 
+/**
+ * app 信息工具类
+ */
 public class AppInfoUtil {
 
     /**

@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 
 public class BadgeUtil {
     /**
-     * 设置Badge 目前支持Launcher:
+     * 设置Badge（聊天未读信息显示的数字） 目前支持Launcher:
      * MIUI
      * Sony
      * Samsung

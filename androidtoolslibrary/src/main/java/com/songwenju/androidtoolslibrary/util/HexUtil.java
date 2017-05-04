@@ -1,10 +1,9 @@
 package com.songwenju.androidtoolslibrary.util;
 
 /**
- * 作者：Administrator on 2016/8/24 16:45
- * 邮箱：906514731@qq.com
+ * 十六进制相关
  */
-public class Hex {
+public class HexUtil {
     /**
      * 用于建立十六进制字符的输出的小写字符数组
      */

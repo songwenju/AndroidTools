@@ -1,21 +1,5 @@
 package com.songwenju.androidtoolslibrary.util;
 
-/**
- * Copyright 2014 Zhenguo Jin (jinzhenguo1990@gmail.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -25,7 +9,6 @@ import android.view.animation.ScaleAnimation;
 /**
  * 动画工具类
  *
- * @author zhenguo
  */
 public final class AnimationUtils {
 
@@ -266,8 +249,8 @@ public final class AnimationUtils {
     /**
      * 获取一个缩小动画
      *
-     * @param durationMillis   时间
-     * @param animationListener  监听
+     * @param durationMillis    时间
+     * @param animationListener 监听
      * @return 一个缩小动画
      */
     public static ScaleAnimation getLessenScaleAnimation(long durationMillis, AnimationListener animationListener) {
@@ -296,7 +279,7 @@ public final class AnimationUtils {
     /**
      * 获取一个缩小动画
      *
-     * @param animationListener  监听
+     * @param animationListener 监听
      * @return 返回一个缩小的动画
      */
     public static ScaleAnimation getLessenScaleAnimation(AnimationListener animationListener) {
@@ -308,9 +291,9 @@ public final class AnimationUtils {
 
     /**
      * 获取一个放大动画
-     * @param durationMillis   时间
-     * @param animationListener  监听
      *
+     * @param durationMillis    时间
+     * @param animationListener 监听
      * @return 返回一个放大的效果
      */
     public static ScaleAnimation getAmplificationAnimation(long durationMillis, AnimationListener animationListener) {
@@ -326,8 +309,7 @@ public final class AnimationUtils {
     /**
      * 获取一个放大动画
      *
-     * @param durationMillis   时间
-     *
+     * @param durationMillis 时间
      * @return 返回一个放大的效果
      */
     public static ScaleAnimation getAmplificationAnimation(long durationMillis) {
@@ -339,7 +321,7 @@ public final class AnimationUtils {
     /**
      * 获取一个放大动画
      *
-     * @param animationListener  监听
+     * @param animationListener 监听
      * @return 返回一个放大的效果
      */
     public static ScaleAnimation getAmplificationAnimation(AnimationListener animationListener) {

@@ -7,8 +7,6 @@ import java.io.IOException;
 
 /**
  * IO utils
- *
- * @author Vladislav Bauer
  */
 
 public class IOUtils {

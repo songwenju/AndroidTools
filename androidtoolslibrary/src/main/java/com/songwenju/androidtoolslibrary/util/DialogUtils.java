@@ -25,7 +25,6 @@ import android.view.WindowManager;
 /**
  * 对话框工具箱
  *
- * @author xiaopan
  */
 public class DialogUtils {
     /**

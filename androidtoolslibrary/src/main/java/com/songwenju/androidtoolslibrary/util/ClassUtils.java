@@ -43,7 +43,6 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * ClassUtils. (Tool, Static, ThreadSafe)
  *
- * @author Liang Fei (liangfei0201 AT gmail DOT com)
  */
 public class ClassUtils {
 
@@ -1044,6 +1043,11 @@ public class ClassUtils {
     }
 
 
+    /**
+     * 校验字符串是否是java关键字
+     * @param name
+     * @return
+     */
     public static String filterJavaKeyword(String name) {
         if ("abstract".equals(name) || "assert".equals(name) ||
                 "boolean".equals(name) || "break".equals(name) ||

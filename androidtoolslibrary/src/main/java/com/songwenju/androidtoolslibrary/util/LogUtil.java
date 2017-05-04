@@ -23,8 +23,6 @@ import java.util.Locale;
  * 日志相关类:默认是测试环境<br>
  * <b>支持：存储Log日志文件到本地。发送Log日志信息到服务器</b>
  *
- * @author yuchao.wang
- * @since 2014-4-23
  */
 public class LogUtil {
 
@@ -128,11 +126,11 @@ public class LogUtil {
      * 整个应用只需要调用一次即可:开始本地记录
      *
      * @param filePath 要写入的目的文件路径
-     * @param iswrite    是否需要写入sdk
+     * @param isWrite    是否需要写入sdk
      */
-    public void startWriteLogToSdcard(String filePath, boolean iswrite) {
+    public void startWriteLogToSdcard(String filePath, boolean isWrite) {
 
-        if (iswrite) {
+        if (isWrite) {
             if (logWriter == null) {
                 try {
                     /** LogUtil这个类的pid,必须在类外面得到 */
@@ -263,28 +261,28 @@ public class LogUtil {
     }
 
     /* ========================下面的是直接使用的========================== */
+    //控制项目是否显示log
+    private static boolean isShowLog = true;
+    private static String mSign = "swj_htv_";
 
     /**
      * verbose详细日志
      *
      * @param tag     日志标记
      * @param message 日志信息
-     * @param isShowLog    是否显示
      */
-    public static void v(String tag, String message, boolean isShowLog) {
+    public static void v(String tag, String message) {
 
         if (isShowLog) {
-            Log.v(tag, getDetailMessage(message));
+            Log.v(mSign +tag, getDetailMessage(message));
         }
     }
 
     /**
      * verbose详细日志
-     *
      * @param message 日志信息
-     * @param isShowLog    是否显示
      */
-    public static void v(String message, boolean isShowLog) {
+    public static void v(String message) {
         if (isShowLog) {
             String[] output = getTagAndDetailMessage(message);
             Log.v(output[0], output[1]);
@@ -296,12 +294,11 @@ public class LogUtil {
      *
      * @param tag     日志标记
      * @param message 日志信息
-     * @param isShowLog    是否显示
      */
-    public static void e(String tag, String message, boolean isShowLog) {
+    public static void e(String tag, String message) {
 
         if (isShowLog) {
-            Log.e(tag, getDetailMessage(message));
+            Log.e(mSign +tag, getDetailMessage(message));
         }
     }
 
@@ -309,9 +306,8 @@ public class LogUtil {
      * error错误日志
      *
      * @param message 日志信息
-     * @param isShowLog    isShowLog
      */
-    public static void e(String message, boolean isShowLog) {
+    public static void e(String message) {
 
         if (isShowLog) {
             String[] output = getTagAndDetailMessage(message);
@@ -324,12 +320,12 @@ public class LogUtil {
      *
      * @param tag     日志标记
      * @param message 日志信息
-     * @param isShowLog    isShowLog
+
      */
-    public static void i(String tag, String message, boolean isShowLog) {
+    public static void i(String tag, String message) {
 
         if (isShowLog) {
-            Log.i(tag, getDetailMessage(message));
+            Log.i(mSign +tag, getDetailMessage(message));
         }
     }
 
@@ -337,9 +333,8 @@ public class LogUtil {
      * info信息日志
      *
      * @param message 日志信息
-     * @param isShowLog    isShowLog
      */
-    public static void i(String message, boolean isShowLog) {
+    public static void i(String message) {
 
         if (isShowLog) {
             String[] output = getTagAndDetailMessage(message);
@@ -352,12 +347,11 @@ public class LogUtil {
      *
      * @param tag     日志标记
      * @param message 日志信息
-     * @param isShowLog    isShowLog
      */
-    public static void d(String tag, String message, boolean isShowLog) {
+    public static void d(String tag, String message) {
 
         if (isShowLog) {
-            Log.d(tag, getDetailMessage(message));
+            Log.d(mSign +tag, getDetailMessage(message));
         }
     }
 
@@ -365,9 +359,8 @@ public class LogUtil {
      * debug调试日志
      *
      * @param message 日志信息
-     * @param isShowLog    isShowLog
      */
-    public static void d(String message, boolean isShowLog) {
+    public static void d(String message) {
 
         if (isShowLog) {
             String[] output = getTagAndDetailMessage(message);
@@ -380,12 +373,11 @@ public class LogUtil {
      *
      * @param tag     日志标记
      * @param message 日志信息
-     * @param isShowLog  isShowLog
      */
-    public static void w(String tag, String message, boolean isShowLog) {
+    public static void w(String tag, String message) {
 
         if (isShowLog) {
-            Log.w(tag, getDetailMessage(message));
+            Log.w(mSign +tag, getDetailMessage(message));
         }
     }
 
@@ -393,9 +385,8 @@ public class LogUtil {
      * warn警告日志
      *
      * @param message 日志信息
-     * @param isShowLog    isShowLog
      */
-    public static void w(String message, boolean isShowLog) {
+    public static void w(String message) {
 
         if (isShowLog) {
             String[] output = getTagAndDetailMessage(message);

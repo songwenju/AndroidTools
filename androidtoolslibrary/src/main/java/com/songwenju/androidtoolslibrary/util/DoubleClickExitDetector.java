@@ -47,7 +47,7 @@ public class DoubleClickExitDetector {
 	/**
 	 * 创建一个双击退出识别器，有效间隔时间默认为2000毫秒
 	 * @param context Androdi上下文
-	 * @param hintMessage 提示消息
+	 * @param hintContent 提示消息
 	 */
 	public DoubleClickExitDetector(Context context, String hintContent) {
 		this(context, hintContent, 2000);

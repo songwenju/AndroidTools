@@ -27,7 +27,7 @@ public class ByteUtils {
 	 * (01)、位移加密
 	 * @param bytes
 	 */
-	public static void byteJiaMi(byte[] bytes){
+	public static void byteEncrypt(byte[] bytes){
 		for (int w = 0; w < bytes.length; w++){
 			int a = bytes[w];
 			a = ~a;

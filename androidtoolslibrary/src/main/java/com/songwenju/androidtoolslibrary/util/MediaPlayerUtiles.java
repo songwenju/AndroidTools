@@ -6,15 +6,8 @@ import android.content.res.AssetManager;
 import android.media.MediaPlayer;
 import android.util.Log;
 
-/**播放资源目录下音频文件
- * 项目名称：book
- * 类描述：
- * 创建人：Administrator
- * 创建时间：2016/12/26 14:17
- * 修改人：Administrator
- * 修改时间：2016/12/26 14:17
- * 修改备注：
- * 联系方式：906514731@qq.com
+/**
+ * 播放资源目录下音频文件
  */
 public class MediaPlayerUtiles {
     static MediaPlayer mMediaPlayer;

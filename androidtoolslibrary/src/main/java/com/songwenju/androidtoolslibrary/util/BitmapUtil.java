@@ -1,18 +1,4 @@
-package com.songwenju.androidtoolslibrary.util; /**
- * Copyright 2014 Zhenguo Jin
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.songwenju.androidtoolslibrary.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -29,10 +15,12 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
@@ -55,7 +43,6 @@ import java.io.InputStream;
 /**
  * Bitmap工具类主要包括获取Bitmap和对Bitmap的操作
  *
- * @author jingle1267@163.com
  */
 final class BitmapUtil {
 
@@ -381,12 +368,12 @@ final class BitmapUtil {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         Matrix matrix = new Matrix();
-        float scaleWidht = ((float) w / width);
+        float scaleWidth = ((float) w / width);
         float scaleHeight = ((float) h / height);
-        matrix.postScale(scaleWidht, scaleHeight);
-        Bitmap newbmp = Bitmap.createBitmap(bitmap, 0, 0, width, height,
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap newBmp = Bitmap.createBitmap(bitmap, 0, 0, width, height,
                 matrix, true);
-        return newbmp;
+        return newBmp;
     }
 
     /**
@@ -458,6 +445,43 @@ final class BitmapUtil {
 
         return bitmapWithReflection;
     }
+
+    /**
+     * 倒影处理
+     * @param reflectionSpacing 原图与倒影之间的间距
+     * @return 加上倒影后的图片
+     */
+    public Bitmap reflection(Bitmap bitmap ,int reflectionSpacing, int reflectionHeight) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+		/* 获取倒影图片，并创建一张宽度与原图相同，但高度等于原图的高度加上间距加上倒影的高度的图片，并创建画布。画布分为上中下三部分，上：是原图；中：是原图与倒影的间距；下：是倒影 */
+        Bitmap reflectionImage = reverseByVertical(bitmap);//
+        Bitmap bitmapWithReflection = Bitmap.createBitmap(width, height + reflectionSpacing + reflectionHeight, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmapWithReflection);
+
+		/* 将原图画到画布的上半部分，将倒影画到画布的下半部分，倒影与画布顶部的间距是原图的高度加上原图与倒影之间的间距 */
+        canvas.drawBitmap(bitmap, 0, 0, null);
+        canvas.drawBitmap(reflectionImage, 0, height + reflectionSpacing, null);
+        reflectionImage.recycle();
+
+		/* 将倒影改成半透明，创建画笔，并设置画笔的渐变从半透明的白色到全透明的白色，然后再倒影上面画半透明效果 */
+        Paint paint = new Paint();
+        paint.setShader(new LinearGradient(0, bitmap.getHeight(), 0, bitmapWithReflection.getHeight() + reflectionSpacing, 0x70ffffff, 0x00ffffff, Shader.TileMode.CLAMP));
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        canvas.drawRect(0, height+reflectionSpacing, width, bitmapWithReflection.getHeight() + reflectionSpacing, paint);
+
+        return bitmapWithReflection;
+    }
+
+    /**
+     * 倒影处理
+     * @return 加上倒影后的图片
+     */
+    public Bitmap reflection(Bitmap bitmap) {
+        return reflection(bitmap,4, bitmap.getHeight() / 2);
+    }
+
 
     /**
      * 压缩图片大小
@@ -571,12 +595,10 @@ final class BitmapUtil {
     }
 
     /**
-     * Returns a Bitmap representing the thumbnail of the specified Bitmap. The
-     * size of the thumbnail is defined by the dimension
-     * android.R.dimen.launcher_application_icon_size.
+     * 返回指定图片的缩略图
+     * 缩略图的大小使用：android.R.dimen.app_icon_size
      * <p/>
-     * This method is not thread-safe and should be invoked on the UI thread
-     * only.
+     * 这个方法不是线程安全的，且只能在ui线程使用。
      *
      * @param bitmap  The bitmap to get a thumbnail of.
      * @param context The application's context.
@@ -941,7 +963,7 @@ final class BitmapUtil {
     }
 
     /**
-     * Apply a blur to a Bitmap
+     * 对bitMap添加模糊
      *
      * @param context    Application context
      * @param sentBitmap Bitmap to be converted
@@ -980,34 +1002,6 @@ final class BitmapUtil {
             output.copyTo(bitmap);
             return bitmap;
         }
-
-        // Stack Blur v1.0 from
-        // http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html
-        //
-        // Java Author: Mario Klingemann <mario at quasimondo.com>
-        // http://incubator.quasimondo.com
-        // created Feburary 29, 2004
-        // Android port : Yahel Bouaziz <yahel at kayenko.com>
-        // http://www.kayenko.com
-        // ported april 5th, 2012
-
-        // This is a compromise between Gaussian Blur and Box blur
-        // It creates much better looking blurs than Box Blur, but is
-        // 7x faster than my Gaussian Blur implementation.
-        //
-        // I called it Stack Blur because this describes best how this
-        // filter works internally: it creates a kind of moving stack
-        // of colors whilst scanning through the image. Thereby it
-        // just has to add one new block of color to the right side
-        // of the stack and remove the leftmost color. The remaining
-        // colors on the topmost layer of the stack are either added on
-        // or reduced by one, depending on if they are on the right or
-        // on the left side of the stack.
-        //
-        // If you are using this algorithm in your code please add
-        // the following line:
-        //
-        // Stack Blur Algorithm by Mario Klingemann <mario@quasimondo.com>
 
         Bitmap bitmap = sentBitmap.copy(sentBitmap.getConfig(), true);
 
@@ -1246,11 +1240,11 @@ final class BitmapUtil {
      */
     public static Bitmap lum(Bitmap bitmap, int lumValue) {
         // 计算出符合要求的亮度值
-        float newlumValue = lumValue * 1.0F / 127;
+        float newLumValue = lumValue * 1.0F / 127;
         // 创建一个颜色矩阵
         ColorMatrix lumColorMatrix = new ColorMatrix();
         // 设置亮度值
-        lumColorMatrix.setScale(newlumValue, newlumValue, newlumValue, 1);
+        lumColorMatrix.setScale(newLumValue, newLumValue, newLumValue, 1);
         // 创建一个画笔并设置其颜色过滤器
         Paint paint = new Paint();
         paint.setColorFilter(new ColorMatrixColorFilter(lumColorMatrix));
@@ -1693,10 +1687,7 @@ final class BitmapUtil {
 
 
     /**
-     * A safer decodeStream method
-     * rather than the one of {@link BitmapFactory}
-     * which will be easy to get OutOfMemory Exception
-     * while loading a big image file.
+     * 一个安全的压缩方法。
      *
      * @param uri 压缩相册返回的照片
      * @return

@@ -4,7 +4,6 @@ import android.app.Application;
 import android.widget.Toast;
 
 /**
- * Created by ZhangTao on 10/12/16.
  * Application单利工具类
  */
 public class App {
@@ -22,7 +21,7 @@ public class App {
             try {
                 app = (Application) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
             } catch (final Exception ex) {
-
+                ex.printStackTrace();
             }
         } finally {
             INSTANCE = app;

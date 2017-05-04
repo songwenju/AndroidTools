@@ -23,7 +23,10 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-public class InputMethodUtils {
+/**
+ * 软键盘相关
+ */
+public class softKeyBoardUtils {
     /**
      * 为给定的编辑器开启软键盘
      *

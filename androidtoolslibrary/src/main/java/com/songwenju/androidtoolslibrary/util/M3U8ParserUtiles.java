@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 作者：Administrator on 2016/8/22 16:06
- * 邮箱：906514731@qq.com
  * m3u8文件解析类
  */
 public class M3U8ParserUtiles {

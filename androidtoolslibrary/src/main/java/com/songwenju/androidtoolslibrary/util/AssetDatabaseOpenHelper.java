@@ -18,8 +18,7 @@ import java.io.InputStreamReader;
  * that will be used for reading and writing. use {@link #getReadableDatabase()} to create and/or open a database that
  * will be used for reading only.</li>
  * </ul>
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-12-5
+ *
  */
 public class AssetDatabaseOpenHelper {
 
@@ -34,7 +33,7 @@ public class AssetDatabaseOpenHelper {
     /**
      * Create and/or open a database that will be used for reading and writing.
      * 
-     * @return  返货数据库的对象
+     * @return  返回数据库的对象
      * @throws RuntimeException if cannot copy database from assets
      * @throws SQLiteException if the database cannot be opened
      */
