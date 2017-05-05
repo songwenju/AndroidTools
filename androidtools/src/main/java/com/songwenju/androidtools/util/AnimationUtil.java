@@ -10,12 +10,12 @@ import android.view.animation.ScaleAnimation;
  * 动画工具类
  *
  */
-public final class AnimationUtils {
+public final class AnimationUtil {
 
     /**
      * Don't let anyone instantiate this class.
      */
-    private AnimationUtils() {
+    private AnimationUtil() {
         throw new Error("Do not need instantiate!");
     }
 

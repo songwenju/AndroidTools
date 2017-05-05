@@ -22,7 +22,7 @@ import android.widget.TextView;
 /**
  * 倒计时器
  */
-public class Countdown implements Runnable {
+public class CountdownUtil implements Runnable {
 	private int remainingSeconds;
 	private int currentRemainingSeconds;
     private boolean running;
@@ -39,7 +39,7 @@ public class Countdown implements Runnable {
      * @param countdownText 倒计时中显示的内容，例如："%s秒后重新获取验证码"，在倒计时的过程中会用剩余描述替换%s
      * @param remainingSeconds 倒计时秒数，例如：60，就是从60开始倒计时一直到0结束
      */
-    public Countdown(TextView showTextView, String countdownText, int remainingSeconds){
+    public CountdownUtil(TextView showTextView, String countdownText, int remainingSeconds){
         this.showTextView = showTextView;
         this.countdownText = countdownText;
         this.remainingSeconds = remainingSeconds;
@@ -52,7 +52,7 @@ public class Countdown implements Runnable {
      * @param countdownText 倒计时中显示的内容，例如："%s秒后重新获取验证码"，在倒计时的过程中会用剩余描述替换%s
      * @param remainingSeconds 倒计时秒数，例如：60，就是从60开始倒计时一直到0结束
      */
-    public Countdown(TextViewGetListener textViewGetListener, String countdownText, int remainingSeconds){
+    public CountdownUtil(TextViewGetListener textViewGetListener, String countdownText, int remainingSeconds){
         this.textViewGetListener = textViewGetListener;
         this.countdownText = countdownText;
         this.remainingSeconds = remainingSeconds;
@@ -64,7 +64,7 @@ public class Countdown implements Runnable {
 	 * @param showTextView 显示倒计时的文本视图
 	 * @param countdownText 倒计时中显示的内容，例如："%s秒后重新获取验证码"，在倒计时的过程中会用剩余描述替换%s
 	 */
-	public Countdown(TextView showTextView, String countdownText){
+	public CountdownUtil(TextView showTextView, String countdownText){
 		this(showTextView, countdownText, 60);
 	}
 
@@ -73,7 +73,7 @@ public class Countdown implements Runnable {
      * @param textViewGetListener 显示倒计时的文本视图获取监听器
      * @param countdownText 倒计时中显示的内容，例如："%s秒后重新获取验证码"，在倒计时的过程中会用剩余描述替换%s
      */
-    public Countdown(TextViewGetListener textViewGetListener, String countdownText){
+    public CountdownUtil(TextViewGetListener textViewGetListener, String countdownText){
         this(textViewGetListener, countdownText, 60);
     }
 

@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 二维码相关
  */
-public class CreatQRCodeImg {
+public class QRCodeUtil {
 
     /**
      * 生成二维码Bitmap

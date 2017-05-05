@@ -41,10 +41,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * ClassUtils. (Tool, Static, ThreadSafe)
+ * ClassUtil.
  *
  */
-public class ClassUtils {
+public class ClassUtil {
 
     public static final String CLASS_EXTENSION = ".class";
 
@@ -738,8 +738,8 @@ public class ClassUtils {
                                     !type.equals(parameterType)) {
                                 eq = false;
                                 if (boxed) {
-                                    type = ClassUtils.getBoxedClass(type);
-                                    parameterType = ClassUtils.getBoxedClass(
+                                    type = ClassUtil.getBoxedClass(type);
+                                    parameterType = ClassUtil.getBoxedClass(
                                             parameterType);
                                 }
                                 if (!type.isAssignableFrom(parameterType)) {
@@ -931,7 +931,7 @@ public class ClassUtils {
 
 
     public static Class<?> toClass(String value) {
-        return StringUtils.isEmpty(value) ? null : ClassUtils.forName(value);
+        return StringUtils.isEmpty(value) ? null : ClassUtil.forName(value);
     }
 
 
@@ -1149,7 +1149,7 @@ public class ClassUtils {
                 }
             }
             else if (type == Class.class) {
-                return ClassUtils.forName((String) value);
+                return ClassUtil.forName((String) value);
             }
         }
         else if (value instanceof Number) {
@@ -1235,5 +1235,5 @@ public class ClassUtils {
     }
 
 
-    private ClassUtils() {}
+    private ClassUtil() {}
 }

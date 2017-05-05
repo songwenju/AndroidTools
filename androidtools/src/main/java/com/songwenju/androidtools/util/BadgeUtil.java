@@ -14,6 +14,9 @@ import android.widget.Toast;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+/**
+ * BadgeUtil，消息角标
+ */
 public class BadgeUtil {
     /**
      * 设置Badge（聊天未读信息显示的数字） 目前支持Launcher:
@@ -135,7 +138,7 @@ public class BadgeUtil {
      * @param count   count
      */
     private static void setBadgeOfSony(Context context, int count) {
-        String launcherClassName = AppInfoUtil.getLauncherClassName(context);
+        String launcherClassName = AppUtil.getLauncherClassName(context);
         if (launcherClassName == null) {
             return;
         }
@@ -161,7 +164,7 @@ public class BadgeUtil {
      */
     private static void setBadgeOfSumsung(Context context, int count) {
         // 获取你当前的应用
-        String launcherClassName = AppInfoUtil.getLauncherClassName(context);
+        String launcherClassName = AppUtil.getLauncherClassName(context);
         if (launcherClassName == null) {
             return;
         }
@@ -181,7 +184,7 @@ public class BadgeUtil {
     private static void setBadgeOfHTC(Context context, int count) {
         Intent intentNotification = new Intent("com.htc.launcher.action.SET_NOTIFICATION");
         ComponentName localComponentName = new ComponentName(context.getPackageName(),
-                AppInfoUtil.getLauncherClassName(context));
+                AppUtil.getLauncherClassName(context));
         intentNotification.putExtra("com.htc.launcher.extra.COMPONENT", localComponentName.flattenToShortString());
         intentNotification.putExtra("com.htc.launcher.extra.COUNT", count);
         context.sendBroadcast(intentNotification);
@@ -201,7 +204,7 @@ public class BadgeUtil {
     private static void setBadgeOfNova(Context context, int count) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("tag", context.getPackageName() + "/" +
-                AppInfoUtil.getLauncherClassName(context));
+                AppUtil.getLauncherClassName(context));
         contentValues.put("count", count);
         context.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"),
                 contentValues);

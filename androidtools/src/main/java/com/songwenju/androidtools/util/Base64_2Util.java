@@ -6,7 +6,7 @@ import java.io.ByteArrayOutputStream;
  * 作者：Administrator on 2016/8/22 14:34
  * 邮箱：906514731@qq.com
  */
-public class Base64_2 {
+public class Base64_2Util {
 
     private static char[] base64EncodeChars = new char[] { 'A', 'B', 'C', 'D',
             'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',

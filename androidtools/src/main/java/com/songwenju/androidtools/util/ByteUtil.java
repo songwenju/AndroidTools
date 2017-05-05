@@ -17,14 +17,11 @@
 package com.songwenju.androidtools.util;
 
 /**
- * <h2>字节工具类，提供一些有关字节的便捷方法</h2>
- * 
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(01)、位移加密：static void byteJiaMi(byte[] bytes)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(02)、从bytes上截取一段：static byte[] cutOut(byte[] bytes, int off, int length)
+ * 字节工具类，提供一些有关字节的便捷方法
  */
-public class ByteUtils {
+public class ByteUtil {
 	/**
-	 * (01)、位移加密
+	 * 位移加密
 	 * @param bytes
 	 */
 	public static void byteEncrypt(byte[] bytes){
@@ -60,7 +57,7 @@ public class ByteUtils {
 
 
 	/**
-	 * (02)、从bytes上截取一段
+	 * 从bytes上截取一段
 	 * @param bytes 母体
 	 * @param off 起始
 	 * @param length 个数

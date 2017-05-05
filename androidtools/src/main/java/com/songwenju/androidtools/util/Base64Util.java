@@ -2,7 +2,7 @@ package com.songwenju.androidtools.util;
 
 import java.util.Arrays;
 
-public class Base64 {
+public class Base64Util {
 	private static final char[] CA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
 	private static final int[] IA = new int[256];
 	static {

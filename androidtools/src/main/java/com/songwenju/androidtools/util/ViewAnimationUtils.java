@@ -38,7 +38,7 @@ public final class ViewAnimationUtils {
                                             final AnimationListener animationListener) {
         if (view.getVisibility() != View.INVISIBLE) {
             view.setVisibility(View.INVISIBLE);
-            AlphaAnimation hiddenAlphaAnimation = AnimationUtils
+            AlphaAnimation hiddenAlphaAnimation = AnimationUtil
                     .getHiddenAlphaAnimation(durationMillis);
             hiddenAlphaAnimation.setAnimationListener(new AnimationListener() {
                 @Override
@@ -116,7 +116,7 @@ public final class ViewAnimationUtils {
      */
     public static void invisibleViewByAlpha(final View view,
                                             boolean isBanClick, final AnimationListener animationListener) {
-        invisibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        invisibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 isBanClick, animationListener);
     }
 
@@ -129,7 +129,7 @@ public final class ViewAnimationUtils {
      */
     public static void invisibleViewByAlpha(final View view,
                                             final AnimationListener animationListener) {
-        invisibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        invisibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 false, animationListener);
     }
 
@@ -141,7 +141,7 @@ public final class ViewAnimationUtils {
      * @param isBanClick 在执行动画的过程中是否禁止点击
      */
     public static void invisibleViewByAlpha(final View view, boolean isBanClick) {
-        invisibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        invisibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 isBanClick, null);
     }
 
@@ -152,7 +152,7 @@ public final class ViewAnimationUtils {
      * @param view 被处理的视图
      */
     public static void invisibleViewByAlpha(final View view) {
-        invisibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        invisibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 false, null);
     }
 
@@ -168,7 +168,7 @@ public final class ViewAnimationUtils {
                                        final boolean isBanClick, final AnimationListener animationListener) {
         if (view.getVisibility() != View.GONE) {
             view.setVisibility(View.GONE);
-            AlphaAnimation hiddenAlphaAnimation = AnimationUtils
+            AlphaAnimation hiddenAlphaAnimation = AnimationUtil
                     .getHiddenAlphaAnimation(durationMillis);
             hiddenAlphaAnimation.setAnimationListener(new AnimationListener() {
                 @Override
@@ -246,7 +246,7 @@ public final class ViewAnimationUtils {
      */
     public static void goneViewByAlpha(final View view,
                                        final boolean isBanClick, final AnimationListener animationListener) {
-        goneViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        goneViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 isBanClick, animationListener);
     }
 
@@ -259,7 +259,7 @@ public final class ViewAnimationUtils {
      */
     public static void goneViewByAlpha(final View view,
                                        final AnimationListener animationListener) {
-        goneViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION, false,
+        goneViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION, false,
                 animationListener);
     }
 
@@ -271,7 +271,7 @@ public final class ViewAnimationUtils {
      * @param isBanClick 在执行动画的过程中是否禁止点击
      */
     public static void goneViewByAlpha(final View view, final boolean isBanClick) {
-        goneViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        goneViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 isBanClick, null);
     }
 
@@ -282,7 +282,7 @@ public final class ViewAnimationUtils {
      * @param view 被处理的视图
      */
     public static void goneViewByAlpha(final View view) {
-        goneViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION, false,
+        goneViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION, false,
                 null);
     }
 
@@ -298,7 +298,7 @@ public final class ViewAnimationUtils {
                                           final boolean isBanClick, final AnimationListener animationListener) {
         if (view.getVisibility() != View.VISIBLE) {
             view.setVisibility(View.VISIBLE);
-            AlphaAnimation showAlphaAnimation = AnimationUtils
+            AlphaAnimation showAlphaAnimation = AnimationUtil
                     .getShowAlphaAnimation(durationMillis);
             showAlphaAnimation.setAnimationListener(new AnimationListener() {
                 @Override
@@ -376,7 +376,7 @@ public final class ViewAnimationUtils {
      */
     public static void visibleViewByAlpha(final View view,
                                           final boolean isBanClick, final AnimationListener animationListener) {
-        visibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        visibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 isBanClick, animationListener);
     }
 
@@ -389,7 +389,7 @@ public final class ViewAnimationUtils {
      */
     public static void visibleViewByAlpha(final View view,
                                           final AnimationListener animationListener) {
-        visibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        visibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 false, animationListener);
     }
 
@@ -402,7 +402,7 @@ public final class ViewAnimationUtils {
      */
     public static void visibleViewByAlpha(final View view,
                                           final boolean isBanClick) {
-        visibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        visibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 isBanClick, null);
     }
 
@@ -413,7 +413,7 @@ public final class ViewAnimationUtils {
      * @param view 被处理的视图
      */
     public static void visibleViewByAlpha(final View view) {
-        visibleViewByAlpha(view, AnimationUtils.DEFAULT_ANIMATION_DURATION,
+        visibleViewByAlpha(view, AnimationUtil.DEFAULT_ANIMATION_DURATION,
                 false, null);
     }
 

@@ -4,12 +4,12 @@ package com.songwenju.androidtools.util;
  * 颜色工具类 包括常用的色值
  *
  */
-public final class Colors {
+public final class ColorUtil {
 
     /**
      * Don't let anyone instantiate this class.
      */
-    private Colors() {
+    private ColorUtil() {
         throw new Error("Do not need instantiate!");
     }
 

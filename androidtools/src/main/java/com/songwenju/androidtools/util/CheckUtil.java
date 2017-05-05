@@ -21,35 +21,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * <h2>提供常用数据验证的工具类，不符合的话就抛异常</h2>
- * 
- * <br><b>1、Object相关验证</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.01)、验证对象是否为空，为空的话抛出异常：static void validObjectIsNull(Object object, String objectName)
- * <br>
- * <br><b>2、String相关验证</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.01)、验证字符串的长度是在指定范围内，不在的话抛出异常，忽略前后的空白符：static void valiStringLength(String string, int minLength, int maxLength)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.02)、验证字符串的长度的最小值，不合法的话抛出异常，忽略前后的空白符：static void valiStringMinLength(String string, int minLength)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.03)、验证字符串的长度的最大值，不合法的话抛出异常，忽略前后的空白符：static void valiStringMaxLength(String string, int maxLength)
- * <br>
- * <br><b>3、int相关验证</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(3.01)、验证Int型数据是在指定范围内，不在的话抛出异常：static valiIntValue(int number, int minValue, int maxValue, String objectName)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(3.02)、验证Int数据的最小值，不合法的话抛出异常：static void valiIntMinValue(int number, int minValue, String objectName)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(3.03)、验证Int数据的最大值，不合法的话抛出异常：static void valiIntMaxValue(int number, int maxValue, String objectName)
- * <br>
- * <br><b>4、File相关验证</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.01)、验证文件是否存在，不存在的话抛出异常：static validFileIsExists(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.02)、验证文件是否能读取，不能读的话抛出异常：static void validFileCanRead(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.03)、验证文件是否能写入，不能写的话抛出异常：static void validFileCanWrite(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.04)、验证file是否是目录，不是的话抛出异常：static void validFileIsDirectory(File directory)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.05)、验证file是否是文件，不是的话抛出异常：static void validFileIsFile(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.06)、对指定的文件对象进行是否null、是否存在以及是否是文件校验，不合法的话抛出异常：static void validFile(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.07)、用于在执行读取之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否读取校验，不合法的话抛出异常：static void validFileByReadBefore(File file)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(4.08)、用于在执行写入之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否写入校验，不合法的话抛出异常：static void validFileByWriteBefore(File file)
+ * 提供常用数据验证的工具类，不符合的话就抛异常
+ *
  */
-public class CheckingUtils {
+public class CheckUtil {
 	/* *****************************************************1、Object相关验证start*********************************************************************** */
 	/**
-	 * (1.01)、验证对象是否为空，为空的话抛出NullPointerException异常
+	 * 验证对象是否为空，为空的话抛出NullPointerException异常
 	 * @param object 待验证的对象
 	 * @param objectName 抛出异常时提示："Object '"+objectName+"' is null!"
 	 */
@@ -65,7 +43,7 @@ public class CheckingUtils {
 	
 	/* *****************************************************2、String相关验证start*********************************************************************** */
 	/**
-	 * (2.01)、验证字符串的长度是在指定范围内，不在的话抛出IllegalArgumentException异常，忽略前后的空白符
+	 * 验证字符串的长度是在指定范围内，不在的话抛出IllegalArgumentException异常，忽略前后的空白符
 	 * @param string 待验证的字符串
 	 * @param minLength 最小长度（包括）
 	 * @param maxLength 最大长度（包括）
@@ -80,7 +58,7 @@ public class CheckingUtils {
 	}
 	
 	/**
-	 * (2.02)、验证字符串的长度的最小值，不合法的话抛出IllegalArgumentException异常，忽略前后的空白符
+	 * 验证字符串的长度的最小值，不合法的话抛出IllegalArgumentException异常，忽略前后的空白符
 	 * @param string 待验证的字符串
 	 * @param minLength 最小长度（包括）
 	 * @throws IllegalArgumentException string的长度小于minLength时抛出此异常
@@ -94,7 +72,7 @@ public class CheckingUtils {
 	}
 	
 	/**
-	 * (2.03)、验证字符串的长度的最大值，不合法的话抛出IllegalArgumentException异常，忽略前后的空白符
+	 * 验证字符串的长度的最大值，不合法的话抛出IllegalArgumentException异常，忽略前后的空白符
 	 * @param string 待验证的字符串
 	 * @param maxLength 最大长度（包括）
 	 * @throws IllegalArgumentException string的长度大于maxLength时抛出此异常
@@ -113,7 +91,7 @@ public class CheckingUtils {
 	
 	/* *****************************************************3、int相关验证start*********************************************************************** */
 	/**
-	 * (3.01)、验证Int型数据是在指定范围内，不在的话抛出IllegalArgumentException异常
+	 * 验证Int型数据是在指定范围内，不在的话抛出IllegalArgumentException异常
 	 * @param number 待验证的数字
 	 * @param minValue 最小值（包括）
 	 * @param maxValue 最大值（包括）
@@ -129,7 +107,7 @@ public class CheckingUtils {
 	
 	
 	/**
-	 * (3.02)、验证Int数据的最小值，不合法的话抛出IllegalArgumentException异常
+	 * 验证Int数据的最小值，不合法的话抛出IllegalArgumentException异常
 	 * @param number 待验证的Int数据
 	 * @param minValue 最小值（包括）
 	 * @param objectName 抛出异常时提示："Int object '"+objectName+"' is illegal!"
@@ -144,7 +122,7 @@ public class CheckingUtils {
 	
 	
 	/**
-	 * (3.03)、验证Int数据的最大值，不合法的话抛出IllegalArgumentException异常
+	 * 验证Int数据的最大值，不合法的话抛出IllegalArgumentException异常
 	 * @param number 待验证的Int数据
 	 * @param maxValue 最大值（包括）
 	 * @param objectName 抛出异常时提示："Int object '"+objectName+"' is illegal!"
@@ -160,7 +138,7 @@ public class CheckingUtils {
 	
 	
 	/**
-	 * (3.01)、验证Long型数据是在指定范围内，不在的话抛出IllegalArgumentException异常
+	 * 验证Long型数据是在指定范围内，不在的话抛出IllegalArgumentException异常
 	 * @param number 待验证的数字
 	 * @param minValue 最小值（包括）
 	 * @param maxValue 最大值（包括）
@@ -176,7 +154,7 @@ public class CheckingUtils {
 	
 	
 	/**
-	 * (3.02)、验证Long数据的最小值，不合法的话抛出IllegalArgumentException异常
+	 * 验证Long数据的最小值，不合法的话抛出IllegalArgumentException异常
 	 * @param number 待验证的Int数据
 	 * @param minValue 最小值（包括）
 	 * @param objectName 抛出异常时提示："Long object '"+objectName+"' is illegal!"
@@ -191,7 +169,7 @@ public class CheckingUtils {
 	
 	
 	/**
-	 * (3.03)、验证Long数据的最大值，不合法的话抛出IllegalArgumentException异常
+	 * 验证Long数据的最大值，不合法的话抛出IllegalArgumentException异常
 	 * @param number 待验证的Int数据
 	 * @param maxValue 最大值（包括）
 	 * @param objectName 抛出异常时提示："Int object '"+objectName+"' is illegal!"
@@ -208,7 +186,7 @@ public class CheckingUtils {
 	
 	/* *****************************************************4、File相关验证start*********************************************************************** */
 	/**
-	 * (4.01)、验证文件是否存在，不存在的话抛出FileNotFoundException异常
+	 * 验证文件是否存在，不存在的话抛出FileNotFoundException异常
 	 * @param file 待验证的文件
 	 * @throws java.io.FileNotFoundException 当文件不存在时抛出此异常
 	 */
@@ -221,7 +199,7 @@ public class CheckingUtils {
 
 
 	/**
-	 * (4.02)、验证文件是否能读取，不能读的话抛出IOException异常
+	 * 验证文件是否能读取，不能读的话抛出IOException异常
 	 * @param file 被检测的对象
 	 * @throws java.io.IOException 不能读时抛出此异常
 	 */
@@ -233,7 +211,7 @@ public class CheckingUtils {
 
 
 	/**
-	 * (4.03)、验证文件是否能写入，不能写的话抛出IOException异常
+	 * 验证文件是否能写入，不能写的话抛出IOException异常
 	 * @param file 被检测的对象
 	 * @throws java.io.IOException 不能写时抛出此异常
 	 */
@@ -245,7 +223,7 @@ public class CheckingUtils {
 
 
 	/**
-	 * (4.04)、验证file是否是目录，不是的话抛出IllegalArgumentException异常
+	 * 验证file是否是目录，不是的话抛出IllegalArgumentException异常
 	 * @param file 待验证的文件对象
 	 * @throws IllegalArgumentException file 不存在或不是目录时抛出此异常
 	 */
@@ -258,7 +236,7 @@ public class CheckingUtils {
 
 
 	/**
-	 * (4.05)、验证file是否是文件，不是的话抛出 IllegalArgumentException异常
+	 * 验证file是否是文件，不是的话抛出 IllegalArgumentException异常
 	 * @param file 待验证的文件对象
 	 * @throws IllegalArgumentException file 不存在或不是文件时抛出此异常
 	 */
@@ -271,7 +249,7 @@ public class CheckingUtils {
 
 
 	/**
-	 * (4.06)、对指定的文件对象进行是否null、是否存在以及是否是文件校验，不合法的话抛出 NullPointerException, FileNotFoundException, IllegalArgumentException异常
+	 * 对指定的文件对象进行是否null、是否存在以及是否是文件校验，不合法的话抛出 NullPointerException, FileNotFoundException, IllegalArgumentException异常
 	 * @param file 指定的文件
 	 * @throws java.io.FileNotFoundException 找不到file代表的文件
 	 * @throws IllegalArgumentException file不是文件
@@ -285,7 +263,7 @@ public class CheckingUtils {
 	}
 
 	/**
-	 * (4.06)、对指定的文件对象进行是否null、是否存在以及是否是目录校验，不合法的话抛出 NullPointerException, FileNotFoundException, IllegalArgumentException异常
+	 * 对指定的文件对象进行是否null、是否存在以及是否是目录校验，不合法的话抛出 NullPointerException, FileNotFoundException, IllegalArgumentException异常
 	 * @param file 指定的文件
 	 * @throws java.io.FileNotFoundException 找不到file代表的文件
 	 * @throws IllegalArgumentException file不是文件
@@ -300,7 +278,7 @@ public class CheckingUtils {
 
 
 	/**
-	 * (4.07)、用于在执行读取之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否读取校验，不合法的话抛出异常
+	 * 用于在执行读取之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否读取校验，不合法的话抛出异常
 	 * @param file 指定的文件
 	 * @throws java.io.FileNotFoundException 找不到file代表的文件
 	 * @throws IllegalArgumentException file不是文件
@@ -317,7 +295,7 @@ public class CheckingUtils {
 
 
 	/**
-	 * (4.08)、用于在执行写入之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否写入校验，不合法的话抛出异常
+	 * 用于在执行写入之前对指定的文件对象进行是否null、是否存在、是否是文件以及能否写入校验，不合法的话抛出异常
 	 * @param file 指定的文件
 	 * @throws java.io.IOException file代表的文件不能写入
 	 */

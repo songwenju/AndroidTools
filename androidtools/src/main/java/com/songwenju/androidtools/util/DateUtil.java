@@ -13,7 +13,7 @@ import java.util.Date;
 public class DateUtil {
 
     /**
-     * 英文简写如：2010
+     * 英文简写如：2020
      */
     public static String FORMAT_Y = "yyyy";
 
@@ -28,17 +28,17 @@ public class DateUtil {
     public static String FORMAT_MDHM = "MM-dd HH:mm";
 
     /**
-     * 英文简写（默认）如：2010-12-01
+     * 英文简写（默认）如：2020-12-01
      */
     public static String FORMAT_YMD = "yyyy-MM-dd";
 
     /**
-     * 英文全称  如：2010-12-01 23:15
+     * 英文全称  如：2020-12-01 23:15
      */
     public static String FORMAT_YMDHM = "yyyy-MM-dd HH:mm";
 
     /**
-     * 英文全称  如：2010-12-01 23:15:06
+     * 英文全称  如：2020-12-01 23:15:06
      */
     public static String FORMAT_YMDHMS = "yyyy-MM-dd HH:mm:ss";
 

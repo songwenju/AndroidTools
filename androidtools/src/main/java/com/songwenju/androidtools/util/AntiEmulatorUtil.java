@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * 检测是否在模拟器上运行
  */
-public class AntiEmulatorUtiles {
+public class AntiEmulatorUtil {
     private static String[] known_pipes = {
             "/dev/socket/qemud",
             "/dev/qemu_pipe"
@@ -82,7 +82,7 @@ public class AntiEmulatorUtiles {
                 e.printStackTrace();
             }
             String driver_data = new String(data);
-            for (String known_qemu_driver : AntiEmulatorUtiles.known_qemu_drivers) {
+            for (String known_qemu_driver : AntiEmulatorUtil.known_qemu_drivers) {
                 if (driver_data.indexOf(known_qemu_driver) != -1) {
                     Log.i("Result:", "Find know_qemu_drivers!");
                     return true;

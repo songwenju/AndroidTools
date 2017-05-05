@@ -76,7 +76,7 @@ public class DES {
 			if (code == 0) {
 				result = new String(retByte, "ISO-8859-1");
 			} else if (code == 1) {
-				result = Base64.encodeToString(retByte,false);
+				result = Base64Util.encodeToString(retByte,false);
 			} else {
 				result = new String(retByte);
 			}
@@ -115,7 +115,7 @@ public class DES {
 			if (code == 0) {
 				retByte = encrypted.getBytes("ISO-8859-1");
 			} else if (code == 1) {
-				retByte = Base64.decode(encrypted);
+				retByte = Base64Util.decode(encrypted);
 			} else {
 				retByte = encrypted.getBytes();
 			}

@@ -38,7 +38,7 @@ public class AESUtil {
         cipher.init(Cipher.ENCRYPT_MODE, sKeySpec, iv);
         byte[] encrypted = cipher.doFinal(sSrc.getBytes());
 
-        return Base64_2.encode(encrypted);//此处使用BASE64做转码功能，同时能起到2次加密的作用。
+        return Base64_2Util.encode(encrypted);//此处使用BASE64做转码功能，同时能起到2次加密的作用。
     }
 
 
@@ -68,7 +68,7 @@ public class AESUtil {
             Cipher cipher = Cipher.getInstance("AESUtil/CBC/PKCS5Padding");
             IvParameterSpec iv = new IvParameterSpec("1234567890123456".getBytes());
             cipher.init(Cipher.DECRYPT_MODE, sKeySpec, iv);
-            byte[] encrypted1 = Base64_2.decode(sSrc);//先用base64解密
+            byte[] encrypted1 = Base64_2Util.decode(sSrc);//先用base64解密
             try {
                 byte[] original = cipher.doFinal(encrypted1);
                 return new String(original);

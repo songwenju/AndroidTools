@@ -3,6 +3,8 @@ package com.songwenju.androidtools.util;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.os.Environment;
+import android.text.TextUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,7 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * AssetDatabaseOpenHelper
+ * SQLiteUtil
  * <ul>
  * <li>Auto copy databse form assets to /data/data/package_name/databases</li>
  * <li>You can use it like {@link SQLiteDatabase}, use {@link #getWritableDatabase()} to create and/or open a database
@@ -20,12 +22,12 @@ import java.io.InputStreamReader;
  * </ul>
  *
  */
-public class AssetDatabaseOpenHelper {
+public class SQLiteUtil {
 
     private Context context;
     private String  databaseName;
 
-    public AssetDatabaseOpenHelper(Context context, String databaseName) {
+    public SQLiteUtil(Context context, String databaseName) {
         this.context = context;
         this.databaseName = databaseName;
     }
@@ -103,5 +105,30 @@ public class AssetDatabaseOpenHelper {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 开始导出数据 此操作比较耗时,建议在线程中进行
+     *
+     * @param context      上下文
+     * @param targetFile   目标文件
+     * @param databaseName 要拷贝的数据库文件名
+     * @return 是否倒出成功
+     */
+    public boolean startExportDatabase(Context context, String targetFile,
+                                       String databaseName) {
+
+        if (!Environment.MEDIA_MOUNTED.equals(Environment
+                .getExternalStorageState())) {
+            return false;
+        }
+        String sourceFilePath = Environment.getDataDirectory() + "/data/"
+                + context.getPackageName() + "/databases/" + databaseName;
+        String destFilePath = Environment.getExternalStorageDirectory()
+                + (TextUtils.isEmpty(targetFile) ? (context.getPackageName() + ".db")
+                : targetFile);
+
+        return FileUtils
+                .copyFile(sourceFilePath, destFilePath);
     }
 }

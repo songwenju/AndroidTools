@@ -11,7 +11,7 @@ import java.util.Calendar;
 /**
  * 定时器
  */
-public class AmUtiles {
+public class AlarmUtil {
     private static AlarmManager am;
     private static PendingIntent pendingIntent;
 

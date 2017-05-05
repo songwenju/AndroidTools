@@ -19,46 +19,12 @@ package com.songwenju.androidtools.util;
 import java.util.Stack;
 
 /**
- * <h2>数组工具类，提供一些有关数组的便捷方法</h2>
- * <p>
- * <br><b>1、增删移动相关</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.01)、以无损的方式，将数组objects的元素从索引headIndex处开始到endIndex索引处结束的元素，向后移动number位：static
- * void backwardByLossless(Object[] objects, int headIndex, int endIndex, int
- * number)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.02)、以无损的方式，将数组objects的元素从索引headIndex处开始到endIndex索引处结束的元素，向前移动number位：static
- * void forwardByLossless(Object[] objects, int headIndex, int endIndex, int
- * number)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.03)、以有损的方式，将数组objects的元素从索引headIndex处开始到endIndex索引处结束的元素，向后移动number位：static
- * void backwardLoss(Object[] objects, int headIndex, int endIndex, int number)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.04)、以有损的方式，将数组objects的元素从索引headIndex处开始到endIndex索引处结束的元素，向前移动number位：static
- * void forwardLoss(Object[] objects, int headIndex, int endIndex, int number)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.05)、以有损的方式在数组objects的索引insertToIndex处插入元素element：static
- * void insert(Object[] objects, int insertToIndex, Object element)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.06)、将数组objects中索引removeIndex出的元素删除：static
- * Object remove(Object[] objects, int removeIndex)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.07)、返回数组objects的字符串表示形式：static String
- * toString(Object[] objects)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.08)、在数组哦objects中搜索元素element：static int
- * search(Object[] objects, Object element)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(1.09)、将数组objects中索引setIndex出的元素用element替换：static
- * Object set(Object[] objects, Object element, int setIndex)
- * <br>
- * <br><b>2、Int数组排序相关</b>
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.01)、使用选择排序法，对数组intArray进行排序：static void
- * SortingByChoose(int[] intArray, int type)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.02)、使用插入排序法，对数组intArray进行排序：static void
- * SortingByInsert(int[] intArray, int type)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.03)、使用冒泡排序法，对数组intArray进行排序：static void
- * SortingByBubbling(int[] intArray, int type)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.04)、使用递归快排法，对数组intArray进行排序：static void
- * SortingByFastRecursion(int[] intArray, int start, int end, int type)
- * <br>&nbsp;&nbsp;&nbsp;&nbsp;(2.05)、使用栈快排法，对数组intArray进行排序：static void
- * SortingByFastStack(int[] intArray, int type)
+ * 数组工具类，提供一些有关数组的便捷方法
  */
-public class ArrayUtils {
+public class ArrayUtil {
 
     /**
-     * (1.08)、在数组objects中搜索元素element
+     * 在数组objects中搜索元素element
      *
      * @param objects 待操作的数组
      * @param element 待匹配的元素
@@ -85,7 +51,7 @@ public class ArrayUtils {
 
 
     /**
-     * (2.01)、使用选择排序法，对数组intArray进行排序
+     * 使用选择排序法，对数组intArray进行排序
      *
      * @param intArray  待排序的数组
      * @param ascending 升序
@@ -117,7 +83,7 @@ public class ArrayUtils {
 
 
     /**
-     * (2.02)、使用插入排序法，对数组intArray进行排序
+     * 使用插入排序法，对数组intArray进行排序
      *
      * @param intArray  待排序的数组
      * @param ascending 升序
@@ -144,7 +110,7 @@ public class ArrayUtils {
 
 
     /**
-     * (2.03)、使用冒泡排序法，对数组intArray进行排序
+     * 使用冒泡排序法，对数组intArray进行排序
      *
      * @param intArray  待排序的数组
      * @param ascending 升序
@@ -169,7 +135,7 @@ public class ArrayUtils {
 
 
     /**
-     * (2.04)、使用递归快排法，对数组intArray进行排序
+     * 使用递归快排法，对数组intArray进行排序
      *
      * @param intArray  待排序的数组
      * @param ascending 排序的方式，用本类中的静态字段指定
@@ -225,7 +191,7 @@ public class ArrayUtils {
 
 
     /**
-     * (2.05)、使用栈快排法，对数组intArray进行排序
+     * 使用栈快排法，对数组intArray进行排序
      *
      * @param intArray  待排序的数组
      * @param ascending 升序
