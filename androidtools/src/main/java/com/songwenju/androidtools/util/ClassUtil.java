@@ -188,7 +188,7 @@ public class ClassUtil {
 
     private static Class<?> _forName(String name)
             throws ClassNotFoundException {
-        if (StringUtils.isEmpty(name)) return null;
+        if (StringUtil.isEmpty(name)) return null;
         String key = name;
         Class<?> clazz = CLASS_CACHE.get(key);
         if (clazz == null) {
@@ -586,7 +586,7 @@ public class ClassUtil {
 
 
     public static boolean isBeforeJava5(String javaVersion) {
-        return (StringUtils.isEmpty(javaVersion) || "1.0".equals(javaVersion) ||
+        return (StringUtil.isEmpty(javaVersion) || "1.0".equals(javaVersion) ||
                 "1.1".equals(javaVersion) || "1.2".equals(javaVersion) ||
                 "1.3".equals(javaVersion) || "1.4".equals(javaVersion));
     }
@@ -891,47 +891,47 @@ public class ClassUtil {
 
 
     public static boolean toBoolean(String value) {
-        return StringUtils.isEmpty(value) ? false : Boolean.parseBoolean(value);
+        return StringUtil.isEmpty(value) ? false : Boolean.parseBoolean(value);
     }
 
 
     public static char toChar(String value) {
-        return StringUtils.isEmpty(value) ? '\0' : value.charAt(0);
+        return StringUtil.isEmpty(value) ? '\0' : value.charAt(0);
     }
 
 
     public static byte toByte(String value) {
-        return StringUtils.isEmpty(value) ? 0 : Byte.parseByte(value);
+        return StringUtil.isEmpty(value) ? 0 : Byte.parseByte(value);
     }
 
 
     public static short toShort(String value) {
-        return StringUtils.isEmpty(value) ? 0 : Short.parseShort(value);
+        return StringUtil.isEmpty(value) ? 0 : Short.parseShort(value);
     }
 
 
     public static int toInt(String value) {
-        return StringUtils.isEmpty(value) ? 0 : Integer.parseInt(value);
+        return StringUtil.isEmpty(value) ? 0 : Integer.parseInt(value);
     }
 
 
     public static long toLong(String value) {
-        return StringUtils.isEmpty(value) ? 0 : Long.parseLong(value);
+        return StringUtil.isEmpty(value) ? 0 : Long.parseLong(value);
     }
 
 
     public static float toFloat(String value) {
-        return StringUtils.isEmpty(value) ? 0 : Float.parseFloat(value);
+        return StringUtil.isEmpty(value) ? 0 : Float.parseFloat(value);
     }
 
 
     public static double toDouble(String value) {
-        return StringUtils.isEmpty(value) ? 0 : Double.parseDouble(value);
+        return StringUtil.isEmpty(value) ? 0 : Double.parseDouble(value);
     }
 
 
     public static Class<?> toClass(String value) {
-        return StringUtils.isEmpty(value) ? null : ClassUtil.forName(value);
+        return StringUtil.isEmpty(value) ? null : ClassUtil.forName(value);
     }
 
 
@@ -966,7 +966,7 @@ public class ClassUtil {
 
 
     public static Object getProperty(Object bean, String property) {
-        if (bean == null || StringUtils.isEmpty(property)) {
+        if (bean == null || StringUtil.isEmpty(property)) {
             return null;
         }
         try {

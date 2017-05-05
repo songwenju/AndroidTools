@@ -21,7 +21,7 @@ import java.util.Locale;
 
 /**
  * 日志相关类:默认是测试环境<br>
- * <b>支持：存储Log日志文件到本地。发送Log日志信息到服务器</b>
+ * 支持：存储Log日志文件到本地。发送Log日志信息到服务器
  *
  */
 public class LogUtil {
@@ -263,7 +263,7 @@ public class LogUtil {
     /* ========================下面的是直接使用的========================== */
     //控制项目是否显示log
     private static boolean isShowLog = true;
-    private static String mSign = "swj_htv_";
+    private static String mSign = "appLog_";
 
     /**
      * verbose详细日志

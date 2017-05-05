@@ -346,7 +346,7 @@ public final class AppUtil {
         final char[] hexDigits = {48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97,
                 98, 99, 100, 101, 102};
         try {
-            MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+            MessageDigest localMessageDigest = MessageDigest.getInstance("MD5Util");
             localMessageDigest.update(paramArrayOfByte);
             byte[] arrayOfByte = localMessageDigest.digest();
             char[] arrayOfChar = new char[32];

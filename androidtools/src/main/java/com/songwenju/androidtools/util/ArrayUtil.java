@@ -295,7 +295,7 @@ public class ArrayUtil {
         boolean addSeparator = false;
         StringBuffer sb = new StringBuffer();
         //如果开始符号不为null且不空
-        if (StringUtils.isNotEmpty(startSymbols)) {
+        if (StringUtil.isNotEmpty(startSymbols)) {
             sb.append(startSymbols);
         }
 
@@ -311,7 +311,7 @@ public class ArrayUtil {
         }
 
         //如果结束符号不为null且不空
-        if (StringUtils.isNotEmpty(endSymbols)) {
+        if (StringUtil.isNotEmpty(endSymbols)) {
             sb.append(endSymbols);
         }
         return sb.toString();
@@ -354,7 +354,7 @@ public class ArrayUtil {
         boolean addSeparator = false;
         StringBuffer sb = new StringBuffer();
         //如果开始符号不为null且不空
-        if (StringUtils.isNotEmpty(startSymbols)) {
+        if (StringUtil.isNotEmpty(startSymbols)) {
             sb.append(startSymbols);
         }
 
@@ -370,7 +370,7 @@ public class ArrayUtil {
         }
 
         //如果结束符号不为null且不空
-        if (StringUtils.isNotEmpty(endSymbols)) {
+        if (StringUtil.isNotEmpty(endSymbols)) {
             sb.append(endSymbols);
         }
         return sb.toString();

@@ -81,7 +81,7 @@ public class SQLiteUtil {
 
     private void copyDatabase(File dbFile) throws IOException {
         InputStream stream = context.getAssets().open(databaseName);
-        FileUtils.writeFile(dbFile, stream);
+        FileUtil.writeFile(dbFile, stream);
         stream.close();
     }
     /**
@@ -128,7 +128,7 @@ public class SQLiteUtil {
                 + (TextUtils.isEmpty(targetFile) ? (context.getPackageName() + ".db")
                 : targetFile);
 
-        return FileUtils
+        return FileUtil
                 .copyFile(sourceFilePath, destFilePath);
     }
 }

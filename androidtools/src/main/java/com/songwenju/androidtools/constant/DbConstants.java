@@ -2,8 +2,7 @@ package com.songwenju.androidtools.constant;
 
 /**
  * Some constants about db
- * 
- * @author songwenju
+ *
  */
 public class DbConstants {
 
