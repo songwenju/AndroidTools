@@ -332,6 +332,61 @@ public class LogUtil {
     /**
      * info信息日志
      *
+     * @param   object 日志标记
+     * @param message 日志信息
+
+     */
+    public static void i(Object object, String message) {
+
+        if (isShowLog) {
+            Log.i(mSign +object.getClass().getSimpleName(), getDetailMessage(message));
+        }
+    }
+
+
+    /**
+     * verbose详细日志
+     * @param message 日志信息
+     */
+    public static void v(Object object,String message) {
+        if (isShowLog) {
+            Log.v(mSign +object.getClass().getSimpleName(), getDetailMessage(message));
+        }
+    }
+
+    /**
+     * debug详细日志
+     * @param message 日志信息
+     */
+    public static void d(Object object,String message) {
+        if (isShowLog) {
+            Log.d(mSign +object.getClass().getSimpleName(), getDetailMessage(message));
+        }
+    }
+
+    /**
+     * error详细日志
+     * @param message 日志信息
+     */
+    public static void e(Object object,String message) {
+        if (isShowLog) {
+            Log.e(mSign +object.getClass().getSimpleName(), getDetailMessage(message));
+        }
+    }
+
+    /**
+     * worm详细日志
+     * @param message 日志信息
+     */
+    public static void w(Object object,String message) {
+        if (isShowLog) {
+            Log.w(mSign +object.getClass().getSimpleName(), getDetailMessage(message));
+        }
+    }
+
+    /**
+     * info信息日志
+     *
      * @param message 日志信息
      */
     public static void i(String message) {
@@ -411,8 +466,8 @@ public class LogUtil {
             else {
                 int b = ste.getClassName().lastIndexOf(".") + 1;
                 output[0] = ste.getClassName().substring(b);
-                output[1] = output[0] + "->" + ste.getMethodName() + "():" + ste.getLineNumber()
-                        + "->" + message;
+                output[1] = output[0] + "." + ste.getMethodName() + "(line:" + ste.getLineNumber()
+                        + "):" + message;
                 break;
             }
         }
@@ -436,8 +491,8 @@ public class LogUtil {
             else {
                 int b = ste.getClassName().lastIndexOf(".") + 1;
                 String TAG = ste.getClassName().substring(b);
-                detailMessage = TAG + "->" + ste.getMethodName() + "():" + ste.getLineNumber()
-                        + "->" + message;
+                detailMessage = TAG + "." + ste.getMethodName() + "(line:" + ste.getLineNumber()
+                        + "):" + message;
                 break;
             }
         }
