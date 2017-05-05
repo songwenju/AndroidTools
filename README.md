@@ -12,6 +12,6 @@ compile 'com.songwenju.tools:androidtools:1.0'
 
 | 类名                       | 作用    |
 | --------                  | -----:   |
-| [DbConstants.java](src/main/java/com/songwenju/androidtools/constant/DbConstants.java)          |数据库常用的字段常量| 
+| [DbConstants.java](androidtools/src/main/java/com/songwenju/androidtools/constant/DbConstants.java)          |数据库常用的字段常量| 
 | HttpConstants.java        |Http 常用字段常量| 
 | AESUtil              |AEs 加密工具类      |
