@@ -11,7 +11,7 @@ compile 'com.songwenju.tools:androidtools:1.0'
 #### 2. 工具类介绍：
 
 | 类名                       | 作用    |
-| --------                  | :-----  |
+| --------                  | :-----:  |
 | [DbConstants.java](androidtools/src/main/java/com/songwenju/androidtools/constant/DbConstants.java)          |数据库常用的字段常量| 
 | [HttpConstants.java](androidtools/src/main/java/com/songwenju/androidtools/constant/HttpConstants.java)      |Http 常用字段常量| 
 | [AESUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AESUtil.java)              |AES 加密工具类      |
