@@ -11,7 +11,7 @@ compile 'com.songwenju.tools:androidtools:1.1'
 #### 2. 工具类介绍：
 
 | 类名                       | 作用    |
-| --------                  | :-----:  |
+| --------                  | :-----  |
 | [AESUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AESUtil.java)              |AES 加密工具类      |
 | [AlarmUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AlarmUtil.java)              | 定时器工具类     |
 | [AnimationUtils.java](androidtools/src/main/java/com/songwenju/androidtools/util/AlarmUtil.java)              | 定时器工具类     |
