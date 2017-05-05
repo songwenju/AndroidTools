@@ -752,4 +752,21 @@ public class NetWorkUtils {
             return null;
         }
     }
+
+    /**
+     * 判断是否连接WIFI
+     * @param context  上下文
+     * @return  boolean
+     */
+    public static boolean isWifiConnected(Context context) {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) context.getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiNetworkInfo = connectivityManager.getNetworkInfo(
+                ConnectivityManager.TYPE_WIFI);
+        if (wifiNetworkInfo.isConnected()) {
+            return true;
+        }
+        return false;
+    }
 }

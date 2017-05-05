@@ -61,17 +61,18 @@ public class SDCardUtils {
         File rootDirectory = getRootDirectory();
         return rootDirectory != null ? rootDirectory.getPath() : null;
     }
+
     /**
-     *获取sd卡路径
+     * 获取sd卡路径
+     *
      * @return Stringpath
      */
-    public static String getSDPath(){
+    public static String getSDPath() {
 
         File sdDir = null;
         boolean sdCardExist = Environment.getExternalStorageState()
-                                         .equals(Environment.MEDIA_MOUNTED);   //判断sd卡是否存在
-        if   (sdCardExist)
-        {
+                .equals(Environment.MEDIA_MOUNTED);   //判断sd卡是否存在
+        if (sdCardExist) {
             sdDir = Environment.getExternalStorageDirectory();//获取跟目录
         }
         return sdDir.toString();

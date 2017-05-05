@@ -11,8 +11,7 @@ import android.widget.ScrollView;
  * <li>onTop and onBottom response ScrollView</li>
  * <li>you can {@link #setOnBorderListener(OnBorderListener)} to set your top and bottom response</li>
  * </ul>
- * 
- * @author trinea@trinea.cn 2013-5-21
+ *
  */
 public class BorderScrollView extends ScrollView {
 

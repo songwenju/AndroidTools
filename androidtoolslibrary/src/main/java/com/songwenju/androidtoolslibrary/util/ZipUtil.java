@@ -18,8 +18,6 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * Java utils 实现的Zip工具
- *
- * @author once
  */
 public class ZipUtil{
     private static final int BUFF_SIZE = 1024 * 1024; // 1M Byte
@@ -292,7 +290,7 @@ public class ZipUtil{
                 zipout.closeEntry();
             }
         }catch (Exception e){
-
+            e.printStackTrace();
         }
 
     }

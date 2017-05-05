@@ -5,18 +5,15 @@ import android.database.sqlite.SQLiteDatabase;
 
 /**
  * SqliteUtils
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-10-21
  */
 public class SqliteUtils {
 
     private static volatile SqliteUtils instance;
 
-    private DbHelper                    dbHelper;
     private SQLiteDatabase db;
 
     private SqliteUtils(Context context) {
-        dbHelper = new DbHelper(context);
+        DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 

@@ -9,8 +9,7 @@ import java.io.ObjectOutputStream;
 
 /**
  * Serialize Utils
- * 
- * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-5-14
+ * 把对象序列化到本地
  */
 public class SerializeUtils {
 
@@ -20,7 +19,7 @@ public class SerializeUtils {
 
     /**
      * Deserialization object from file.
-     * 
+     *
      * @param filePath file path
      * @return de-serialized object
      * @throws RuntimeException if an error occurs
@@ -45,9 +44,9 @@ public class SerializeUtils {
 
     /**
      * Serialize object to file.
-     * 
+     *
      * @param filePath file path
-     * @param obj object
+     * @param obj      object
      * @throws RuntimeException if an error occurs
      */
     public static void serialization(String filePath, Object obj) {

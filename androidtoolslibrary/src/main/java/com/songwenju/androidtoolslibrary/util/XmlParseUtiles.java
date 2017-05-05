@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 作者：Administrator on 2016/6/16 11:11
- * 邮箱：906514731@qq.com
  * 对pull解析xml进行了封装，不用给每个xml，再创建一个对应的解析类
  */
 public class XmlParseUtiles {
@@ -22,12 +20,11 @@ public class XmlParseUtiles {
     /**
      * 解析XML
      *
-     * @param  xml字节流
-     * @param clazz 字节码      如：Object.class
+     * @param clazz     字节码      如：Object.class
      * @param startName 开始位置
      * @return 返回List列表
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public static List getXmlList(String XML, Class<?> clazz, String startName) {
         List list = null;
         XmlPullParser parser = Xml.newPullParser();
@@ -54,8 +51,7 @@ public class XmlParseUtiles {
                                 setXmlValue(object, parser.getAttributeName(i),
                                         parser.getAttributeValue(i));
                             }
-                        }
-                        else if (object != null) {
+                        } else if (object != null) {
                             setXmlValue(object, name, parser.nextText());
                         }
                         break;
@@ -78,11 +74,11 @@ public class XmlParseUtiles {
     /**
      * 解析XML
      *
-     * @param is xml字节流
+     * @param is    xml字节流
      * @param clazz 字节码      如：Object.class
      * @return 返回Object
      */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public static Object getXmlObject(String is, Class<?> clazz) {
         XmlPullParser parser = Xml.newPullParser();
         Object object = null;
@@ -114,8 +110,7 @@ public class XmlParseUtiles {
                                 setXmlValue(object, parser.getAttributeName(j),
                                         parser.getAttributeValue(j));
                             }
-                        }
-                        else {
+                        } else {
                             f = subObject.getClass().getDeclaredFields();
                         }
 
@@ -149,13 +144,11 @@ public class XmlParseUtiles {
                                             f[i].set(object, list);
                                         }
                                     }
-                                }
-                                else {   //普通属性
+                                } else {   //普通属性
                                     if (subObject != null) {
                                         setXmlValue(subObject, name,
                                                 parser.nextText());
-                                    }
-                                    else {
+                                    } else {
                                         setXmlValue(object, name,
                                                 parser.nextText());
                                     }
@@ -186,8 +179,8 @@ public class XmlParseUtiles {
     /**
      * 把xml标签的值，转换成对象里属性的值
      *
-     * @param t 对象
-     * @param name xml标签名
+     * @param t     对象
+     * @param name  xml标签名
      * @param value xml标签名对应的值
      */
     private static void setXmlValue(Object t, String name, String value) {
@@ -201,26 +194,19 @@ public class XmlParseUtiles {
 
                     if (fieldType == String.class) {
                         f[i].set(t, value);
-                    }
-                    else if (fieldType == Integer.TYPE) {
+                    } else if (fieldType == Integer.TYPE) {
                         f[i].set(t, Integer.parseInt(value));
-                    }
-                    else if (fieldType == Float.TYPE) {
+                    } else if (fieldType == Float.TYPE) {
                         f[i].set(t, Float.parseFloat(value));
-                    }
-                    else if (fieldType == Double.TYPE) {
+                    } else if (fieldType == Double.TYPE) {
                         f[i].set(t, Double.parseDouble(value));
-                    }
-                    else if (fieldType == Long.TYPE) {
+                    } else if (fieldType == Long.TYPE) {
                         f[i].set(t, Long.parseLong(value));
-                    }
-                    else if (fieldType == Short.TYPE) {
+                    } else if (fieldType == Short.TYPE) {
                         f[i].set(t, Short.parseShort(value));
-                    }
-                    else if (fieldType == Boolean.TYPE) {
+                    } else if (fieldType == Boolean.TYPE) {
                         f[i].set(t, Boolean.parseBoolean(value));
-                    }
-                    else {
+                    } else {
                         f[i].set(t, value);
                     }
                 }

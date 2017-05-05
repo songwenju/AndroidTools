@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * 用来计算显示的时间是多久之前的！
+ * 用来计算显示的时间是多久之前的
  */
 public class TransitionTime {
 
