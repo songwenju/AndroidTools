@@ -7,10 +7,10 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * AES Advanced Encryption Standard
+ * AESUtil Advanced Encryption Standard
  * 高级加密标准
  */
-public class AES {
+public class AESUtil {
 
     /**
      * 加密
@@ -32,8 +32,8 @@ public class AES {
             return null;
         }
         byte[] raw = sKey.getBytes();
-        SecretKeySpec sKeySpec = new SecretKeySpec(raw, "AES");
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");//"算法/模式/补码方式"
+        SecretKeySpec sKeySpec = new SecretKeySpec(raw, "AESUtil");
+        Cipher cipher = Cipher.getInstance("AESUtil/CBC/PKCS5Padding");//"算法/模式/补码方式"
         IvParameterSpec iv = new IvParameterSpec("1234567890123456".getBytes());//使用CBC模式，需要一个向量iv，可增加加密算法的强度
         cipher.init(Cipher.ENCRYPT_MODE, sKeySpec, iv);
         byte[] encrypted = cipher.doFinal(sSrc.getBytes());
@@ -64,8 +64,8 @@ public class AES {
                 return null;
             }
             byte[] raw = sKey.getBytes("ASCII");
-            SecretKeySpec sKeySpec = new SecretKeySpec(raw, "AES");
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            SecretKeySpec sKeySpec = new SecretKeySpec(raw, "AESUtil");
+            Cipher cipher = Cipher.getInstance("AESUtil/CBC/PKCS5Padding");
             IvParameterSpec iv = new IvParameterSpec("1234567890123456".getBytes());
             cipher.init(Cipher.DECRYPT_MODE, sKeySpec, iv);
             byte[] encrypted1 = Base64_2.decode(sSrc);//先用base64解密
