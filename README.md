@@ -1,4 +1,4 @@
-### AndroidTools :s ome android tools for developer
+### AndroidTools : Android开发超详细工具类，一行代码集成，方便快速开发
 
 ---
 #### 1. 使用方法：在gradle 文件中添加：
