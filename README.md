@@ -4,7 +4,7 @@
 #### 1. 使用方法：在gradle 文件中添加：
 
 ```
-compile 'com.songwenju.tools:androidtools:1.1'
+compile 'com.songwenju.tools:androidtools:1.1.1'
 ```
 
 
