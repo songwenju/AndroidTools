@@ -14,7 +14,7 @@ compile 'com.songwenju.tools:androidtools:1.1.1'
 | --------                  | :-----  |
 | [AESUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AESUtil.java)              |AES 加密工具类      |
 | [AlarmUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AlarmUtil.java)              | 定时器工具类     |
-| [AnimationUtils.java](androidtools/src/main/java/com/songwenju/androidtools/util/AnimationUtils.java)              | 动画工具类     |
+| [AnimationUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AnimationUtil.java)              | 动画工具类     |
 | [AntiEmulatorUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AntiEmulatorUtil.java)     | 模拟器相关工具类     |
 | [AppUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/AppUtil.java)              | app信息工具类     |
 | [ArrayUtil.java](androidtools/src/main/java/com/songwenju/androidtools/util/ArrayUtil.java)              | 数组工具类     |
